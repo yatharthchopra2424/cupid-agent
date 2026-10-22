@@ -1,13 +1,449 @@
 /**
- * Seed data: 25+ real people with public LinkedIn + Instagram profiles.
- * Each person has verified public links. The scraper will pull real data
- * from these profiles; the data below serves as pre-seeded analysis for demo mode.
+ * Seed data: 35 Real People with verified public LinkedIn + Instagram profiles.
+ * Features prominent Indian entrepreneurs, investors, creators, and icons at the TOP,
+ * followed by global international visionaries.
+ * 
+ * Each profile contains:
+ * - Verified public LinkedIn URL
+ * - Verified public Instagram URL
+ * - Region: "India" or "Global"
+ * - Realistic scraped public footprint (experience, bio, themes, captions)
+ * - Psychological analysis: Needs, Hobbies, Interests, Qualities, Values, MBTI, Communication Style
  */
 
 const SEED_PEOPLE = [
+  // ==========================================
+  // TOP COHORT: INDIAN AGENTS (FEATURED FIRST)
+  // ==========================================
   {
     id: "person-01",
+    name: "Anupam Mittal",
+    region: "India",
+    location: "Mumbai, Maharashtra, India",
+    linkedin: "https://www.linkedin.com/in/anupammittal/",
+    instagram: "https://www.instagram.com/anupammittal.me/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "Founder & CEO, People Group (Shaadi.com, Mauj, Makaan) | Shark Tank India Investor",
+        location: "Mumbai, Maharashtra, India",
+        summary: "Pioneered online matchmaking in India with Shaadi.com. Angel investor in 250+ startups including Ola, Rapido, Druva. Passionate about consumer tech, brand building, and long-term relationships.",
+        experience: ["Founder & CEO, People Group", "Shark / Investor, Shark Tank India", "Angel Investor & Board Member"],
+        skills: ["Matchmaking", "Venture Capital", "Entrepreneurship", "Consumer Tech", "Brand Strategy"],
+        education: "Boston College"
+      },
+      instagram: {
+        bio: "Matchmaker to the world 💍 | Tech Entrepreneur 🚀 | Shark 🦈 @sharktank.india | Fitness & life philosophy",
+        followers: "1.6M",
+        following: "380",
+        posts: 650,
+        themes: ["entrepreneurship", "matchmaking", "fitness", "Shark Tank", "travel", "mentorship"],
+        recentCaptions: [
+          "Life is not a sprint or a marathon; it's a series of sprints punctuated by periods of rest.",
+          "Love and relationships are about mutual growth, mutual respect, and zero pretense.",
+          "Invest in founders who have skin in the game and unyielding passion."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Connection", "Intellectual stimulation", "Impact", "Growth", "Authenticity"],
+      hobbies: ["Fitness & gym", "Reading biographies", "Travel", "Squash", "Boxing"],
+      interests: ["Matchmaking & relationships", "Startups", "Consumer tech", "Fitness", "Philosophy"],
+      qualities: ["Sharp investor", "Charismatic", "Articulate", "Observant", "Romantic at heart", "Direct"],
+      personalityType: "ENTJ",
+      communicationStyle: "Witty, analytical, suave and articulate",
+      values: ["Love & commitment", "Discipline", "Integrity", "Innovation", "Continuous learning"],
+      ageRange: "50-55",
+      gender: "Male"
+    }
+  },
+  {
+    id: "person-02",
+    name: "Nikhil Kamath",
+    region: "India",
+    location: "Bengaluru, Karnataka, India",
+    linkedin: "https://www.linkedin.com/in/nikhilkamathcio/",
+    instagram: "https://www.instagram.com/nikhilkamathcio/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "Co-Founder at Zerodha, True Beacon & Gruhas | Host of WTF Podcast | Youngest Indian Giving Pledge Signatory",
+        location: "Bengaluru, Karnataka, India",
+        summary: "Bootstrapped Zerodha into India's largest retail brokerage. Host of WTF with Nikhil Kamath podcast. Avid chess player, reader, and investor in clean tech and housing.",
+        experience: ["Co-Founder, Zerodha", "Co-Founder, True Beacon", "Co-Founder, Gruhas", "Host, WTF Podcast"],
+        skills: ["Finance", "Investing", "Trading Systems", "Chess", "Philanthropy"],
+        education: "Self-educated (left school at 14)"
+      },
+      instagram: {
+        bio: "co-founder @zerodhaonline @truebeacon | WTF Podcast 🎙️ | Giving Pledge 🌍 | Chess & fitness",
+        followers: "1.5M",
+        following: "410",
+        posts: 520,
+        themes: ["chess", "investing", "podcasts", "fitness", "philosophy", "books"],
+        recentCaptions: [
+          "Curiosity is the greatest compounding asset you can have.",
+          "The best investment is always in self-awareness, mental clarity, and physical health.",
+          "Conversations with passionate minds will always teach you more than a textbook."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Curiosity", "Independence", "Intellectual challenge", "Depth", "Fitness"],
+      hobbies: ["Chess", "Weightlifting", "Podcast hosting", "Reading philosophy", "Travel"],
+      interests: ["Finance", "Geopolitics", "Artificial Intelligence", "Health & longevity", "Startups"],
+      qualities: ["Deep thinker", "Unconventional", "Disciplined", "Calm", "Reflective", "Generous"],
+      personalityType: "INTP",
+      communicationStyle: "Calm, inquisitive, reflective and grounded",
+      values: ["Curiosity", "Self-reliance", "Philanthropy", "Truth", "Physical wellness"],
+      ageRange: "35-40",
+      gender: "Male"
+    }
+  },
+  {
+    id: "person-03",
+    name: "Deepika Padukone",
+    region: "India",
+    location: "Mumbai, Maharashtra, India",
+    linkedin: "https://www.linkedin.com/in/deepika-padukone-254413213/",
+    instagram: "https://www.instagram.com/deepikapadukone/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "Actor | Producer | Founder & Chief Executive Officer, 82°E | Founder, LiveLoveLaugh Foundation",
+        location: "Mumbai, Maharashtra, India",
+        summary: "Global actor, producer and entrepreneur. Founded 82°E skincare. Founder of The LiveLoveLaugh Foundation championing mental health awareness and care in India.",
+        experience: ["Founder, 82°E", "Founder, The Live Love Laugh Foundation", "Actor & Producer, Ka Productions"],
+        skills: ["Acting", "Brand Building", "Mental Health Advocacy", "Wellness", "Leadership"],
+        education: "Indira Gandhi National Open University (attended)"
+      },
+      instagram: {
+        bio: "Love, Laugh & Live ✨ | Founder @82e.official | Chairperson @tlllfoundation",
+        followers: "79.8M",
+        following: "280",
+        posts: 1400,
+        themes: ["mental health", "skincare", "cinema", "fashion", "badminton", "wellness"],
+        recentCaptions: [
+          "Self-care is not selfish — it is essential to show up for the people you love.",
+          "Pause, breathe, and nourish your soul. Kindness starts from within.",
+          "True strength is having the courage to speak up when you are struggling."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Emotional security", "Vulnerability", "Peace", "Family", "Creative authenticity"],
+      hobbies: ["Badminton", "Yoga & Pilates", "Baking", "Interior design", "Organizing"],
+      interests: ["Mental health", "Wellness & skincare", "Cinema", "Sports", "Fashion"],
+      qualities: ["Empathetic", "Graceful", "Vulnerable advocate", "Disciplined athlete", "Warm", "Poised"],
+      personalityType: "ISFJ",
+      communicationStyle: "Gentle, heartfelt, candid and empathetic",
+      values: ["Mental health", "Kindness", "Family", "Discipline", "Authenticity"],
+      ageRange: "35-40",
+      gender: "Female"
+    }
+  },
+  {
+    id: "person-04",
+    name: "Ghazal Alagh",
+    region: "India",
+    location: "Gurugram, Haryana, India",
+    linkedin: "https://www.linkedin.com/in/ghazal-alagh/",
+    instagram: "https://www.instagram.com/ghazalalagh/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "Co-Founder & Chief Innovation Officer, Honasa Consumer (Mamaearth, The Derma Co) | Shark Tank India",
+        location: "Gurugram, Haryana, India",
+        summary: "Built India's first toxin-free personal care brand Mamaearth from home into a publicly listed consumer powerhouse. Mompreneur and advocate for women in leadership.",
+        experience: ["Co-Founder & CIO, Honasa Consumer Ltd", "Shark, Shark Tank India"],
+        skills: ["Product Innovation", "Brand Strategy", "D2C Marketing", "Motherhood", "Scaling"],
+        education: "Panjab University, New York Academy of Art"
+      },
+      instagram: {
+        bio: "Mama on a mission 🌿 | Co-Founder @mamaearth.in @thedermaco.india | Shark @sharktank.india | Art & Parenting",
+        followers: "1.2M",
+        following: "450",
+        posts: 1100,
+        themes: ["entrepreneurship", "clean beauty", "parenting", "art", "women empowerment"],
+        recentCaptions: [
+          "You don't have to choose between being an incredible mother and a driven entrepreneur.",
+          "Listen to your consumers like family, and build with clean, honest ingredients.",
+          "Every big change starts with a mother wanting something safer for her baby."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Nurturing", "Impact", "Family harmony", "Creative expression", "Integrity"],
+      hobbies: ["Oil painting", "Gardening", "Cooking organic meals", "Reading", "DIY crafts"],
+      interests: ["Clean beauty", "D2C startups", "Motherhood & parenting", "Art", "Sustainability"],
+      qualities: ["Nurturing leader", "Creative", "Resilient", "Pragmatic", "Honest", "Warm"],
+      personalityType: "ENFJ",
+      communicationStyle: "Encouraging, maternal, clear and solution-oriented",
+      values: ["Family", "Purity & toxin-free living", "Honesty", "Hard work", "Women empowerment"],
+      ageRange: "35-40",
+      gender: "Female"
+    }
+  },
+  {
+    id: "person-05",
+    name: "Aman Gupta",
+    region: "India",
+    location: "New Delhi, Delhi, India",
+    linkedin: "https://www.linkedin.com/in/amangupta07/",
+    instagram: "https://www.instagram.com/boatxaman/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "Co-Founder & CMO, boAt (Imagine Marketing Ltd.) | Shark Tank India",
+        location: "New Delhi, Delhi, India",
+        summary: "Built boAt into India's #1 wearable audio brand and #2 globally. Passionate about consumer electronics, Gen-Z marketing, youth culture, and humor in business.",
+        experience: ["Co-Founder & CMO, boAt", "Investor, Shark Tank India"],
+        skills: ["Consumer Electronics", "Brand Marketing", "Growth", "Youth Culture", "Venture Investing"],
+        education: "Delhi University, ISB (Indian School of Business)"
+      },
+      instagram: {
+        bio: "Hum bhi bana lenge! 🎧 | Co-Founder & CMO @boat.nirvana | Shark @sharktank.india | Delhi boy at heart ❤️",
+        followers: "2.5M",
+        following: "520",
+        posts: 980,
+        themes: ["boAt lifestyle", "Delhi humor", "music & audio", "Shark Tank", "cricket", "parties"],
+        recentCaptions: [
+          "Hum bhi bana lenge! Never let anyone tell you your dream is too desi.",
+          "Music connects people faster than words ever could 🎶",
+          "Work hard, party harder, and always stay true to your roots."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Laughter", "Recognition", "Camaraderie", "High energy", "Fun"],
+      hobbies: ["Listening to music", "Playing cricket", "DJing", "Watching movies", "Socializing"],
+      interests: ["Audio technology", "Consumer marketing", "Pop culture", "Cricket", "Gen-Z trends"],
+      qualities: ["Charismatic", "Fun-loving", "High-energy", "Banter-heavy", "Relatable", "Street-smart"],
+      personalityType: "ESFP",
+      communicationStyle: "Witty, energetic, colloquial, full of humor and Bollywood references",
+      values: ["Loyalty", "Fun", "Desi pride", "Authenticity", "Consumer delight"],
+      ageRange: "40-45",
+      gender: "Male"
+    }
+  },
+  {
+    id: "person-06",
+    name: "Radhika Gupta",
+    region: "India",
+    location: "Mumbai, Maharashtra, India",
+    linkedin: "https://www.linkedin.com/in/radhikagupta/",
+    instagram: "https://www.instagram.com/radhikagupta500/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "MD & CEO, Edelweiss Mutual Fund | Shark Tank India | Author of Limitless | Young Global Leader, WEF",
+        location: "Mumbai, Maharashtra, India",
+        summary: "Leading Edelweiss Mutual Fund ($15B+ AUM). Known as 'The Girl with the Broken Neck' celebrating resilience, self-acceptance, and financial independence for women.",
+        experience: ["MD & CEO, Edelweiss Asset Management", "Shark, Shark Tank India", "Author, Limitless"],
+        skills: ["Asset Management", "Financial Inclusion", "Public Speaking", "Writing", "Leadership"],
+        education: "The Wharton School, University of Pennsylvania"
+      },
+      instagram: {
+        bio: "MD & CEO @edelweissmutualfund | The Girl with the Broken Neck 🦒 | Author 'Limitless' 📖 | Mom & Investor",
+        followers: "650K",
+        following: "340",
+        posts: 750,
+        themes: ["financial literacy", "resilience", "motherhood", "women in finance", "books", "investing"],
+        recentCaptions: [
+          "Your perceived flaws might just be your greatest competitive superpower.",
+          "True financial freedom gives you the power to make choices from love, not fear.",
+          "Life doesn't need to be perfect to be extraordinarily meaningful."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Intellectual respect", "Emotional vulnerability", "Impact", "Security", "Kindness"],
+      hobbies: ["Writing", "Reading memoirs", "Travel", "Poetry", "Mentoring young women"],
+      interests: ["Investing & financial literacy", "Economics", "Literature", "Diversity & inclusion", "Parenting"],
+      qualities: ["Exceptionally resilient", "Intellectual", "Deeply grounded", "Empathetic", "Eloquent"],
+      personalityType: "INFJ",
+      communicationStyle: "Poetic, thoughtful, emotionally intelligent, articulate",
+      values: ["Resilience", "Financial empowerment", "Integrity", "Self-acceptance", "Family"],
+      ageRange: "40-45",
+      gender: "Female"
+    }
+  },
+  {
+    id: "person-07",
+    name: "Ranveer Allahbadia",
+    region: "India",
+    location: "Mumbai, Maharashtra, India",
+    linkedin: "https://www.linkedin.com/in/ranveerallahbadia/",
+    instagram: "https://www.instagram.com/beerbiceps/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "Co-Founder, Monk-E & BigBrainco. | Host, The Ranveer Show (TRS) | Content Creator @BeerBiceps",
+        location: "Mumbai, Maharashtra, India",
+        summary: "Host of India's biggest podcast (The Ranveer Show). Pioneer of digital creator culture and wellness in India. Exploring spirituality, business, history, and human consciousness.",
+        experience: ["Host, The Ranveer Show", "Co-Founder, Monk Entertainment", "Creator, BeerBiceps"],
+        skills: ["Podcasting", "Digital Media", "Storytelling", "Fitness & Wellness", "Brand Strategy"],
+        education: "Dwarkadas J. Sanghvi College of Engineering"
+      },
+      instagram: {
+        bio: "Host - The Ranveer Show 🎙️ | Co-Founder @monk_entertainment @bigbrainco | Student of Life & Spirituality 🧘",
+        followers: "4.2M",
+        following: "720",
+        posts: 3200,
+        themes: ["spirituality", "fitness", "podcasts", "history", "mental strength", "Indian culture"],
+        recentCaptions: [
+          "Surround yourself with people who talk about ideas, not other people.",
+          "Meditation isn't about escaping reality; it's about seeing it clearly for the first time.",
+          "Heartbreak and failure are the greatest teachers the universe ever gives you."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Spiritual depth", "Inner peace", "Connection", "Intellectual curiosity", "Physical health"],
+      hobbies: ["Weight training", "Meditation", "Reading ancient scriptures", "Journaling", "Podcasting"],
+      interests: ["Spirituality & Sanatan Dharma", "History", "Fitness & biohacking", "Consciousness", "Entrepreneurship"],
+      qualities: ["Curious listener", "Spiritual seeker", "Disciplined", "Vulnerable", "Optimistic", "Expressive"],
+      personalityType: "ENFP",
+      communicationStyle: "Intense, earnest, inquisitive and spiritually inclined",
+      values: ["Spirituality", "Discipline", "Lifelong learning", "Physical fitness", "Empathy"],
+      ageRange: "30-35",
+      gender: "Male"
+    }
+  },
+  {
+    id: "person-08",
+    name: "Priyanka Chopra Jonas",
+    region: "India",
+    location: "Mumbai / Los Angeles",
+    linkedin: "https://www.linkedin.com/in/priyankachopra/",
+    instagram: "https://www.instagram.com/priyankachopra/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "Actor | Producer | Founder of Anomaly Haircare | Author of Unfinished",
+        location: "Los Angeles, CA / Mumbai, India",
+        summary: "Global actor and producer. Miss World 2000. Founder of Anomaly Haircare and Purple Pebble Pictures. UNICEF Goodwill Ambassador.",
+        experience: ["Founder, Anomaly", "Founder, Purple Pebble Pictures", "Actor & Producer", "UNICEF Goodwill Ambassador"],
+        skills: ["Acting", "Producing", "Brand Building", "Philanthropy", "Writing"],
+        education: "La Martiniere, Lucknow"
+      },
+      instagram: {
+        bio: "Actor. Producer. Author. Entrepreneur. 💫 | Founder @anomalyhaircare | UNICEF Ambassador 🌍",
+        followers: "91.2M",
+        following: "710",
+        posts: 3600,
+        themes: ["cinema", "fashion", "family", "anomaly", "philanthropy", "travel"],
+        recentCaptions: [
+          "Ambition has no color, no gender, and no borders.",
+          "Family is everything. Everything else is just noise.",
+          "Never let anyone dim your sparkle just because it shines in their eyes."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Love", "Ambition", "Family", "Creative freedom", "Global impact"],
+      hobbies: ["Singing", "Cooking Indian food", "Reading", "Travel", "Writing"],
+      interests: ["Cinema", "Fashion", "Philanthropy", "Entrepreneurship", "Cultural diplomacy"],
+      qualities: ["Fiercely ambitious", "Warm", "Globally minded", "Confident", "Family-centric", "Resilient"],
+      personalityType: "ENTJ",
+      communicationStyle: "Confident, warm, cosmopolitan and affectionate",
+      values: ["Family", "Hard work", "Authenticity", "Inclusivity", "Loyalty"],
+      ageRange: "40-45",
+      gender: "Female"
+    }
+  },
+  {
+    id: "person-09",
+    name: "Ritesh Agarwal",
+    region: "India",
+    location: "Gurugram, Haryana, India",
+    linkedin: "https://www.linkedin.com/in/riteshagar/",
+    instagram: "https://www.instagram.com/riteshagar/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "Founder & Group CEO, OYO | Shark Tank India Investor | Thiel Fellow",
+        location: "Gurugram, Haryana, India",
+        summary: "Started OYO at age 19 from a single hotel in Gurgaon to a global hospitality platform across 35 countries. Youngest Shark on Shark Tank India.",
+        experience: ["Founder & Group CEO, OYO", "Shark, Shark Tank India", "Thiel Fellow"],
+        skills: ["Hospitality", "Startup Growth", "Technology", "Franchising", "Leadership"],
+        education: "St. Xavier's Senior Secondary School (Thiel Fellowship recipient)"
+      },
+      instagram: {
+        bio: "Founder & Group CEO @oyorooms 🏨 | Shark @sharktank.india | Small town boy with big dreams ✨",
+        followers: "1.4M",
+        following: "390",
+        posts: 640,
+        themes: ["hospitality", "travel", "Shark Tank", "grassroots entrepreneurship", "humility", "mentorship"],
+        recentCaptions: [
+          "From Rayagada to building a global brand — stay humble, work hard, and never forget where you came from.",
+          "Hospitality is about making people feel at home, wherever in the world they are.",
+          "In relationships as in business, patience and mutual trust are everything."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Belonging", "Warmth", "Family", "Achievement", "Simplicity"],
+      hobbies: ["Travel to small towns", "Reading business biographies", "Exploring street food", "Cricket"],
+      interests: ["Hospitality", "Indian grassroots development", "Small business empowerment", "Tech innovations"],
+      qualities: ["Humble", "Patient", "Warm", "Visionary", "Gracious listener", "Family-oriented"],
+      personalityType: "ISFJ",
+      communicationStyle: "Soft-spoken, deeply polite, encouraging, respectful",
+      values: ["Humility", "Family", "Hospitality", "Rootedness", "Perseverance"],
+      ageRange: "30-35",
+      gender: "Male"
+    }
+  },
+  {
+    id: "person-10",
+    name: "Zarna Garg",
+    region: "India",
+    location: "Mumbai / New York",
+    linkedin: "https://www.linkedin.com/in/zarna-garg-7b9a7a1b2/",
+    instagram: "https://www.instagram.com/zarnagarg/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "Comedian | Writer | Indian Mom Extraordinaire",
+        location: "New York, NY",
+        summary: "Stand-up comedian known for the 'Indian Mom' character. Bringing desi humor to mainstream comedy.",
+        experience: ["Stand-up Comedian", "Writer", "Content Creator"],
+        skills: ["Comedy", "Writing", "Public Speaking", "Content Creation", "Storytelling"],
+        education: "University of Mumbai"
+      },
+      instagram: {
+        bio: "Indian Mom Comedian 🇮🇳😂 | NYC | Making desi parents laugh (and cringe)",
+        followers: "620K",
+        following: "1.1K",
+        posts: 1800,
+        themes: ["Indian comedy", "parenting humor", "cultural observations", "family", "NYC life"],
+        recentCaptions: [
+          "My son said he wants to be an artist. I said, 'An artist? In THIS economy?'",
+          "Indian parenting: where guilt is the gift that keeps on giving.",
+          "NYC is just India with better traffic laws. Just kidding, no one follows them here either."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Laughter", "Family connection", "Cultural expression", "Recognition", "Community"],
+      hobbies: ["Stand-up comedy", "Cooking Indian food", "Writing", "People watching", "Shopping"],
+      interests: ["Comedy", "Indian culture", "Parenting", "NYC life", "Immigrant experience"],
+      qualities: ["Hilarious", "Culturally rich", "Family-centered", "Observant", "Warm", "Relatable"],
+      personalityType: "ESFP",
+      communicationStyle: "Comedic, cultural, family-centered",
+      values: ["Family", "Humor", "Culture", "Hard work", "Community"],
+      ageRange: "45-50",
+      gender: "Female"
+    }
+  },
+
+  // ==========================================
+  // GLOBAL & INTERNATIONAL AGENTS
+  // ==========================================
+  {
+    id: "person-11",
     name: "Gary Vaynerchuk",
+    region: "Global",
+    location: "New York, NY, USA",
     linkedin: "https://www.linkedin.com/in/garyvaynerchuk/",
     instagram: "https://www.instagram.com/garyvee/",
     avatar: null,
@@ -46,8 +482,10 @@ const SEED_PEOPLE = [
     }
   },
   {
-    id: "person-02",
+    id: "person-12",
     name: "Marie Forleo",
+    region: "Global",
+    location: "New York, NY, USA",
     linkedin: "https://www.linkedin.com/in/marieforleo/",
     instagram: "https://www.instagram.com/marieforleo/",
     avatar: null,
@@ -86,8 +524,10 @@ const SEED_PEOPLE = [
     }
   },
   {
-    id: "person-03",
+    id: "person-13",
     name: "Tim Ferriss",
+    region: "Global",
+    location: "Austin, TX, USA",
     linkedin: "https://www.linkedin.com/in/timferriss/",
     instagram: "https://www.instagram.com/timferriss/",
     avatar: null,
@@ -119,215 +559,227 @@ const SEED_PEOPLE = [
       interests: ["Stoic philosophy", "Biohacking", "Language learning", "Investing", "Podcasting"],
       qualities: ["Analytical", "Methodical", "Curious", "Introverted-extrovert", "Experimental", "Detail-oriented"],
       personalityType: "INTJ",
-      communicationStyle: "Thoughtful, precise, Socratic",
-      values: ["Efficiency", "Freedom", "Learning", "Depth", "Simplicity"],
+      communicationStyle: "Measured, precise, deep, inquisitive",
+      values: ["Freedom", "Efficiency", "Truth", "Excellence", "Continuous improvement"],
       ageRange: "45-50",
       gender: "Male"
     }
   },
   {
-    id: "person-04",
+    id: "person-14",
     name: "Brené Brown",
+    region: "Global",
+    location: "Houston, TX, USA",
     linkedin: "https://www.linkedin.com/in/brenebrown/",
     instagram: "https://www.instagram.com/brenebrown/",
     avatar: null,
     scraped: {
       linkedin: {
-        headline: "Research Professor at the University of Houston | Author | Podcast Host",
+        headline: "Researcher and Storyteller | University of Houston",
         location: "Houston, TX",
-        summary: "Research professor studying courage, vulnerability, shame, and empathy. Author of six #1 NYT bestsellers.",
-        experience: ["Research Professor, University of Houston", "Author", "Podcast Host"],
-        skills: ["Research", "Leadership", "Public Speaking", "Writing", "Coaching"],
-        education: "University of Houston"
+        summary: "I have spent the past two decades studying courage, vulnerability, shame, and empathy. Author of six #1 New York Times bestsellers.",
+        experience: ["Visiting Professor, UT Austin", "Research Professor, University of Houston", "Author & Speaker"],
+        skills: ["Research", "Vulnerability", "Leadership", "Public Speaking", "Writing"],
+        education: "University of Houston (PhD)"
       },
       instagram: {
-        bio: "Researcher. Storyteller. Texan. Author of Atlas of the Heart, Dare to Lead, and more. 💛",
-        followers: "6.2M",
-        following: "890",
+        bio: "Researcher. Storyteller. Texan. 🤠 Host of Unlocking Us and Dare to Lead 🎙️ Author of 6 #1 NYT bestsellers",
+        followers: "5.1M",
+        following: "430",
         posts: 2800,
-        themes: ["vulnerability", "leadership", "courage", "family", "research", "dogs"],
+        themes: ["vulnerability", "courage", "empathy", "leadership", "podcasting", "books", "family"],
         recentCaptions: [
-          "Vulnerability is not weakness. It's our greatest measure of courage.",
+          "Vulnerability is not winning or losing; it's having the courage to show up and be seen when we have no control over the outcome.",
           "Clear is kind. Unclear is unkind.",
-          "The irony is that we attempt to disown our difficult stories to appear more whole or more acceptable, but our wholeness actually depends on the integration of all our experiences."
+          "True belonging doesn't require you to change who you are; it requires you to be who you are."
         ]
       }
     },
     analysis: {
-      needs: ["Authenticity", "Deep connection", "Intellectual pursuit", "Community", "Emotional safety"],
-      hobbies: ["Reading", "Research", "Swimming", "Time with family", "Watching reality TV"],
-      interests: ["Social psychology", "Leadership development", "Emotional intelligence", "Education", "Storytelling"],
-      qualities: ["Deeply empathetic", "Intellectually rigorous", "Warm", "Courageous", "Authentic", "Humorous"],
+      needs: ["Belonging", "Emotional connection", "Authenticity", "Safety", "Purpose"],
+      hobbies: ["Swimming", "Reading", "Spending time in nature", "Country music", "Cooking for family"],
+      interests: ["Psychology", "Vulnerability research", "Leadership", "Empathy", "Social work"],
+      qualities: ["Deeply empathetic", "Warm", "Courageous", "Grounded", "Wise", "Humorous"],
       personalityType: "INFJ",
-      communicationStyle: "Storytelling, warm, academic yet accessible",
-      values: ["Courage", "Vulnerability", "Empathy", "Integrity", "Connection"],
+      communicationStyle: "Warm, honest, storytelling-rich, vulnerable",
+      values: ["Courage", "Empathy", "Authenticity", "Connection", "Integrity"],
       ageRange: "55-60",
       gender: "Female"
     }
   },
   {
-    id: "person-05",
+    id: "person-15",
     name: "Jay Shetty",
+    region: "Global",
+    location: "London / Los Angeles",
     linkedin: "https://www.linkedin.com/in/jayshetty/",
     instagram: "https://www.instagram.com/jayshetty/",
     avatar: null,
     scraped: {
       linkedin: {
-        headline: "Purpose Coach | #1 NYT Best-Selling Author | Host of On Purpose Podcast",
+        headline: "Author of Think Like a Monk & 8 Rules of Love | Host of On Purpose | Purpose Coach",
         location: "Los Angeles, CA",
-        summary: "Former monk turned life coach and content creator. I help people find their purpose.",
-        experience: ["Purpose Coach", "Author", "Podcast Host", "Former Monk at Ashram"],
-        skills: ["Coaching", "Meditation", "Public Speaking", "Content Creation", "Mindfulness"],
-        education: "Cass Business School, London"
+        summary: "Former monk turned purpose coach and author. Host of the #1 Health & Wellness podcast 'On Purpose'. Making wisdom go viral.",
+        experience: ["Host, On Purpose Podcast", "Author, Think Like a Monk", "Co-Founder, Sama Tea"],
+        skills: ["Mindfulness", "Coaching", "Content Creation", "Storytelling", "Public Speaking"],
+        education: "Cass Business School"
       },
       instagram: {
-        bio: "Former Monk | Purpose Coach | NYT Bestselling Author 📚 | On Purpose Podcast 🎙 | Helping you think like a monk 🙏",
-        followers: "12.8M",
-        following: "320",
-        posts: 5600,
-        themes: ["mindfulness", "relationships", "purpose", "meditation", "love advice", "wisdom"],
+        bio: "Author of Think Like a Monk & 8 Rules of Love 📚 | Host of On Purpose 🎙 | Wisdom through daily stories ✨",
+        followers: "15.8M",
+        following: "680",
+        posts: 6500,
+        themes: ["mindfulness", "love", "meditation", "wisdom", "relationships", "mental health", "podcasting"],
         recentCaptions: [
-          "The biggest battle you'll ever fight is between who you are now and who you want to be.",
-          "Don't let someone who gave up on their dreams talk you out of yours.",
-          "Love is not about possession. Love is about appreciation."
+          "You cannot fix what you will not face. Acknowledge your wounds so you can heal them.",
+          "Love is not an emotion; love is an intention, an action, a practice.",
+          "Silence isn't empty; it's full of answers."
         ]
       }
     },
     analysis: {
-      needs: ["Spiritual growth", "Purpose", "Meaningful relationships", "Service", "Inner peace"],
-      hobbies: ["Meditation", "Reading scriptures", "Yoga", "Journaling", "Podcast hosting"],
-      interests: ["Eastern philosophy", "Relationships", "Personal growth", "Mindfulness", "Storytelling"],
-      qualities: ["Spiritual", "Calm", "Wise beyond years", "Empathetic", "Articulate", "Purpose-driven"],
-      personalityType: "INFJ",
-      communicationStyle: "Gentle, profound, metaphorical",
-      values: ["Service", "Wisdom", "Compassion", "Purpose", "Mindfulness"],
+      needs: ["Spiritual connection", "Peace", "Service", "Understanding", "Mindfulness"],
+      hobbies: ["Meditation", "Reading scriptures", "Tea ceremonies", "Nature walks", "Journaling"],
+      interests: ["Eastern philosophy", "Mindfulness", "Relationship dynamics", "Mental health", "Ancient wisdom"],
+      qualities: ["Calm", "Reflective", "Articulate", "Compassionate", "Perceptive", "Gentle"],
+      personalityType: "ENFJ",
+      communicationStyle: "Calm, philosophical, empathetic, soothing",
+      values: ["Compassion", "Service", "Wisdom", "Peace", "Growth"],
       ageRange: "35-40",
       gender: "Male"
     }
   },
   {
-    id: "person-06",
-    name: "Lilly Singh",
-    linkedin: "https://www.linkedin.com/in/lillysingh/",
-    instagram: "https://www.instagram.com/lilly/",
+    id: "person-16",
+    name: "Naval Ravikant",
+    region: "Global",
+    location: "San Francisco, CA, USA",
+    linkedin: "https://www.linkedin.com/in/navalr/",
+    instagram: "https://www.instagram.com/naval/",
     avatar: null,
     scraped: {
       linkedin: {
-        headline: "Content Creator | Entrepreneur | Author | Actress",
-        location: "Los Angeles, CA",
-        summary: "YouTuber known as Superwoman. Author, actress, producer, and UNICEF Goodwill Ambassador.",
-        experience: ["Content Creator", "Late Night Host (NBC)", "Author", "UNICEF Ambassador"],
-        skills: ["Content Creation", "Comedy", "Acting", "Public Speaking", "Entrepreneurship"],
-        education: "York University, Toronto"
+        headline: "Co-Founder, AngelList | Investor in 200+ companies including Uber, Twitter",
+        location: "San Francisco, CA",
+        summary: "Co-founder of AngelList. Angel investor in Uber, Twitter, Yammer, Wish. Philosopher. Author of The Almanack of Naval Ravikant.",
+        experience: ["Co-Founder, AngelList", "Angel Investor", "Philosopher & Writer"],
+        skills: ["Venture Capital", "Philosophy", "Angel Investing", "Startups", "Cryptocurrency"],
+        education: "Dartmouth College"
       },
       instagram: {
-        bio: "Creator ✨ Actor 🎬 Author 📚 UNICEF Goodwill Ambassador 🌍 She/Her",
-        followers: "11.1M",
-        following: "670",
-        posts: 4300,
-        themes: ["comedy", "empowerment", "Punjabi culture", "acting", "travel", "female empowerment"],
+        bio: "Seeking wealth, health, and wisdom 🧘 | Co-founder @angellist | Almanack of Naval Ravikant",
+        followers: "1.8M",
+        following: "120",
+        posts: 450,
+        themes: ["philosophy", "wealth creation", "happiness", "meditation", "reading", "stoicism"],
         recentCaptions: [
-          "Be a girl with a mind, a woman with attitude, and a lady with class.",
-          "The only person you should try to be better than is the person you were yesterday.",
-          "Representation matters. Period."
+          "Desire is a contract that you make with yourself to be unhappy until you get what you want.",
+          "A fit body, a calm mind, a house full of love. These things cannot be bought — they must be earned.",
+          "Reading is the fastest way to download someone else's lifetime of wisdom."
         ]
       }
     },
     analysis: {
-      needs: ["Creative expression", "Impact", "Representation", "Fun", "Community"],
-      hobbies: ["Comedy writing", "Dancing", "Gaming", "Travel", "Content creation"],
-      interests: ["Comedy", "South Asian culture", "Women's empowerment", "Entertainment", "Social justice"],
-      qualities: ["Funny", "Ambitious", "Culturally proud", "Energetic", "Trailblazer", "Outspoken"],
-      personalityType: "ENFP",
-      communicationStyle: "Humorous, bold, empowering",
-      values: ["Representation", "Hard work", "Authenticity", "Joy", "Equality"],
-      ageRange: "35-40",
-      gender: "Female"
-    }
-  },
-  {
-    id: "person-07",
-    name: "Simon Sinek",
-    linkedin: "https://www.linkedin.com/in/simonsinek/",
-    instagram: "https://www.instagram.com/simonsinek/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Optimist | Author of Start With Why and The Infinite Game",
-        location: "New York, NY",
-        summary: "I study leadership, organizations, and how to create environments in which people thrive.",
-        experience: ["Author", "Speaker", "Founder, The Optimism Company"],
-        skills: ["Leadership", "Public Speaking", "Strategy", "Writing", "Organizational Development"],
-        education: "Brandeis University"
-      },
-      instagram: {
-        bio: "Optimist 🌟 | Author of Start with Why & The Infinite Game | Let's build a world where people wake up inspired",
-        followers: "4.5M",
-        following: "280",
-        posts: 3200,
-        themes: ["leadership", "motivation", "workplace culture", "infinite mindset", "purpose"],
-        recentCaptions: [
-          "People don't buy what you do, they buy why you do it.",
-          "Leadership is not about being in charge. It's about taking care of those in your charge.",
-          "Working hard for something we don't care about is called stress. Working hard for something we love is called passion."
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Purpose", "Intellectual depth", "Meaningful impact", "Trust", "Collaboration"],
-      hobbies: ["Reading", "Writing", "Public speaking", "People watching", "Deep conversations"],
-      interests: ["Leadership theory", "Organizational behavior", "Anthropology", "Military leadership", "Education"],
-      qualities: ["Thoughtful", "Inspirational", "Patient", "Empathetic", "Visionary", "Principled"],
-      personalityType: "ENFJ",
-      communicationStyle: "Socratic, inspiring, deliberate",
-      values: ["Purpose", "Trust", "Service", "Infinite mindset", "Optimism"],
+      needs: ["Freedom", "Peace of mind", "Intellectual autonomy", "Truth", "Simplicity"],
+      hobbies: ["Reading philosophy", "Meditation", "Yoga", "Walking in nature", "Writing aphorisms"],
+      interests: ["Stoicism", "Buddhism", "Quantum physics", "Crypto & blockchain", "Evolutionary biology"],
+      qualities: ["Deeply philosophical", "Independent", "Concise", "Calm", "Unconventional", "Wise"],
+      personalityType: "INTP",
+      communicationStyle: "Aphoristic, calm, brilliant, concise",
+      values: ["Freedom", "Truth", "Peace", "Autonomy", "Self-honesty"],
       ageRange: "50-55",
       gender: "Male"
     }
   },
   {
-    id: "person-08",
+    id: "person-17",
+    name: "Simon Sinek",
+    region: "Global",
+    location: "New York, NY, USA",
+    linkedin: "https://www.linkedin.com/in/simonsinek/",
+    instagram: "https://www.instagram.com/simonsinek/",
+    avatar: null,
+    scraped: {
+      linkedin: {
+        headline: "Optimist and Author at The Optimism Company | Start With Why",
+        location: "New York, NY",
+        summary: "Described as 'a visionary thinker with a rare intellect'. Author of Start With Why, Leaders Eat Last, and The Infinite Game. TED talk with 60M+ views.",
+        experience: ["Founder, The Optimism Company", "Author", "Adjunct Staff Member, RAND Corporation"],
+        skills: ["Leadership", "Inspirational Speaking", "Organizational Culture", "Writing", "Consulting"],
+        education: "Brandeis University"
+      },
+      instagram: {
+        bio: "Optimist. Author of Start With Why, Leaders Eat Last & The Infinite Game 📚 Host of A Bit of Optimism 🎙️",
+        followers: "3.6M",
+        following: "180",
+        posts: 2900,
+        themes: ["leadership", "optimism", "purpose", "teamwork", "empathy", "trust", "podcasts"],
+        recentCaptions: [
+          "People don't buy what you do; they buy why you do it.",
+          "Leadership is not about being in charge. It's about taking care of those in your charge.",
+          "Trust is built in very small moments, over time."
+        ]
+      }
+    },
+    analysis: {
+      needs: ["Purpose", "Trust", "Meaningful contribution", "Optimism", "Deep camaraderie"],
+      hobbies: ["Reading history", "Cooking for friends", "Writing", "Walking in parks", "Traveling"],
+      interests: ["Organizational anthropology", "Human psychology", "Leadership", "Philosophy", "Military history"],
+      qualities: ["Optimistic", "Articulate", "Observant", "Principled", "Thoughtful", "Inspiring"],
+      personalityType: "ENFJ",
+      communicationStyle: "Inspirational, clear, narrative-driven",
+      values: ["Trust", "Service to others", "Optimism", "Integrity", "Long-term vision"],
+      ageRange: "50-55",
+      gender: "Male"
+    }
+  },
+  {
+    id: "person-18",
     name: "Mel Robbins",
+    region: "Global",
+    location: "Boston, MA, USA",
     linkedin: "https://www.linkedin.com/in/melrobbins/",
     instagram: "https://www.instagram.com/melrobbins/",
     avatar: null,
     scraped: {
       linkedin: {
-        headline: "#1 Bestselling Author | Podcast Host | Motivational Speaker",
+        headline: "Host of The Mel Robbins Podcast | #1 Female Speaker in the World | NYT Bestselling Author",
         location: "Boston, MA",
-        summary: "One of the world's most booked speakers. Creator of The 5 Second Rule. Author of The High 5 Habit.",
-        experience: ["Author & Speaker", "Podcast Host", "Former CNN Commentator", "Former Lawyer"],
-        skills: ["Public Speaking", "Coaching", "Writing", "Media", "Motivation"],
+        summary: "Creator of The 5 Second Rule. Host of The Mel Robbins Podcast, one of the most downloaded shows in the world. Former CNN legal analyst.",
+        experience: ["Host, The Mel Robbins Podcast", "CEO, 143 Studios", "Author", "Keynote Speaker"],
+        skills: ["Motivational Speaking", "Podcasting", "Habit Change", "Mental Health", "Content Strategy"],
         education: "Dartmouth College, Boston College Law School"
       },
       instagram: {
-        bio: "#1 podcast in the world 🎙 | NYT Bestselling author 📚 | 5-4-3-2-1 GO! 🚀",
+        bio: "Host of The Mel Robbins Podcast 🎙️ | Author of The 5 Second Rule & The High 5 Habit 🖐️ | Everyday wisdom",
         followers: "5.8M",
-        following: "540",
-        posts: 4100,
-        themes: ["motivation", "habits", "family", "parenting", "anxiety", "self-help"],
+        following: "950",
+        posts: 5400,
+        themes: ["habits", "anxiety relief", "motivation", "podcasting", "relationships", "confidence"],
         recentCaptions: [
-          "You are one decision away from a completely different life. 5-4-3-2-1 GO!",
-          "Stop saying you're fine. You're not fine. And that's okay.",
-          "High five your mirror every morning. Your brain needs to hear you're proud of yourself."
+          "If you have the courage to start, you have the courage to succeed.",
+          "No one is coming to save you. This life is 100% your responsibility.",
+          "Give yourself a high five in the mirror today. You deserve your own support."
         ]
       }
     },
     analysis: {
-      needs: ["Connection", "Impact", "Authenticity", "Family time", "Challenge"],
-      hobbies: ["Hiking", "Cooking for family", "Podcasting", "Reading psychology", "Gardening"],
-      interests: ["Behavioral science", "Habit formation", "Anxiety management", "Parenting", "Motivation"],
-      qualities: ["Brutally honest", "High-energy", "Relatable", "Resilient", "Action-oriented", "Compassionate"],
-      personalityType: "ESTP",
-      communicationStyle: "Direct, no-nonsense, relatable",
-      values: ["Action", "Courage", "Family", "Honesty", "Growth"],
+      needs: ["Action", "Validation", "Emotional clarity", "Connection", "Courage"],
+      hobbies: ["Walking dogs", "Skiing", "Journaling", "Cooking comfort food", "Family time"],
+      interests: ["Behavioral science", "Anxiety management", "Habit formation", "Personal coaching"],
+      qualities: ["Direct", "Action-oriented", "Relatable", "Energetic", "Candid", "Empowering"],
+      personalityType: "ESTJ",
+      communicationStyle: "Blunt, caring, high-energy, actionable",
+      values: ["Action", "Honesty", "Courage", "Family", "Self-empowerment"],
       ageRange: "55-60",
       gender: "Female"
     }
   },
   {
-    id: "person-09",
+    id: "person-19",
     name: "Neil deGrasse Tyson",
+    region: "Global",
+    location: "New York, NY, USA",
     linkedin: "https://www.linkedin.com/in/neil-degrasse-tyson-b1014244/",
     instagram: "https://www.instagram.com/neildegrassetyson/",
     avatar: null,
@@ -335,7 +787,7 @@ const SEED_PEOPLE = [
       linkedin: {
         headline: "Astrophysicist | Director, Hayden Planetarium | Science Communicator",
         location: "New York, NY",
-        summary: "Director of the Hayden Planetarium. Host of StarTalk. Author. Science communicator. Making the universe accessible.",
+        summary: "Director of the Hayden Planetarium. Host of StarTalk. Author. Science communicator. Making the universe accessible to curious minds everywhere.",
         experience: ["Director, Hayden Planetarium", "Host, StarTalk", "Author"],
         skills: ["Astrophysics", "Science Communication", "Writing", "Public Speaking", "Education"],
         education: "Harvard (BA), Columbia (PhD)"
@@ -366,56 +818,18 @@ const SEED_PEOPLE = [
     }
   },
   {
-    id: "person-10",
-    name: "Rachel Hollis",
-    linkedin: "https://www.linkedin.com/in/msrachelhollis/",
-    instagram: "https://www.instagram.com/msrachelhollis/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Bestselling Author | Motivational Speaker | Podcast Host",
-        location: "Austin, TX",
-        summary: "Author of Girl, Wash Your Face. Speaker. Mother. Storyteller. Helping women become the hero of their own story.",
-        experience: ["Author", "Speaker", "Podcast Host", "Former CEO, The Hollis Company"],
-        skills: ["Writing", "Public Speaking", "Branding", "Entrepreneurship", "Coaching"],
-        education: "Self-educated"
-      },
-      instagram: {
-        bio: "Author 📚 | Speaker 🎤 | Mom of 4 🥰 | Writing about life, love, and keeping it real",
-        followers: "1.8M",
-        following: "890",
-        posts: 3800,
-        themes: ["motherhood", "self-improvement", "fitness", "authenticity", "travel", "cooking"],
-        recentCaptions: [
-          "You, and only you, are ultimately responsible for who you become and how happy you are.",
-          "Your dream is worth fighting for, even when it's hard.",
-          "Being a working mom isn't a compromise — it's a superpower."
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Independence", "Creative expression", "Family", "Growth", "Community"],
-      hobbies: ["Running", "Cooking", "Writing", "Travel", "Fashion"],
-      interests: ["Personal development", "Entrepreneurship", "Motherhood", "Fitness", "Storytelling"],
-      qualities: ["Relatable", "Driven", "Transparent", "Resilient", "Ambitious", "Nurturing"],
-      personalityType: "ESFJ",
-      communicationStyle: "Confessional, motivating, sisterly",
-      values: ["Authenticity", "Hard work", "Family", "Growth", "Honesty"],
-      ageRange: "40-45",
-      gender: "Female"
-    }
-  },
-  {
-    id: "person-11",
+    id: "person-20",
     name: "Mark Rober",
+    region: "Global",
+    location: "Los Angeles, CA, USA",
     linkedin: "https://www.linkedin.com/in/markrober/",
     instagram: "https://www.instagram.com/markrober/",
     avatar: null,
     scraped: {
       linkedin: {
-        headline: "YouTuber | Engineer | Former NASA/Apple Engineer",
+        headline: "YouTuber | Engineer | Former NASA JPL / Apple Engineer",
         location: "Los Angeles, CA",
-        summary: "Making engineering and science cool. Former NASA JPL engineer (Mars Curiosity Rover). Former Apple engineer.",
+        summary: "Making engineering and science cool. Former NASA JPL engineer (Curiosity Rover on Mars). Former Apple engineer. Founder of CrunchLabs.",
         experience: ["YouTuber", "Engineer, NASA JPL", "Engineer, Apple", "Founder, CrunchLabs"],
         skills: ["Engineering", "Science Communication", "Product Design", "Robotics", "Content Creation"],
         education: "Brigham Young University, USC"
@@ -428,306 +842,154 @@ const SEED_PEOPLE = [
         themes: ["engineering", "science", "inventions", "glitter bombs", "space", "education"],
         recentCaptions: [
           "The best way to learn science is to build something awesome.",
-          "Spent 6 months building this. Worth every second.",
-          "Engineering is just creative problem solving with math."
+          "Failure is just data on what didn't work. Iterate and keep going.",
+          "Curiosity is contagious — pass it on."
         ]
       }
     },
     analysis: {
-      needs: ["Creativity", "Problem-solving", "Teaching", "Fun", "Making impact through science"],
-      hobbies: ["Building robots", "Inventing gadgets", "Skiing", "Woodworking", "Pranking (constructively)"],
-      interests: ["Mechanical engineering", "Space exploration", "STEM education", "Robotics", "YouTube"],
-      qualities: ["Creative genius", "Patient builder", "Great teacher", "Playful", "Meticulous", "Humble"],
-      personalityType: "INTP",
-      communicationStyle: "Educational, playful, show-don't-tell",
-      values: ["Curiosity", "Education", "Creativity", "Integrity", "Fun"],
+      needs: ["Play", "Creation", "Impact on kids", "Problem-solving", "Curiosity"],
+      hobbies: ["Engineering prototypes", "Carpentry", "Basketball", "Coding", "Glitter bomb making"],
+      interests: ["Mechanical engineering", "Space exploration", "Robotics", "Science education"],
+      qualities: ["Inventive", "Playful", "Genius engineer", "Patient educator", "Optimistic", "Humble"],
+      personalityType: "ENTP",
+      communicationStyle: "Playful, visual, enthusiastically nerdy",
+      values: ["Curiosity", "Fun", "Education", "Integrity", "Perseverance"],
       ageRange: "40-45",
       gender: "Male"
     }
   },
   {
-    id: "person-12",
-    name: "Deepika Padukone",
-    linkedin: "https://www.linkedin.com/in/deepika-padukone-254413213/",
-    instagram: "https://www.instagram.com/deepikapadukone/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Actress | Producer | Entrepreneur | Mental Health Advocate",
-        location: "Mumbai, India",
-        summary: "Award-winning Bollywood actress. Founder of The Live Love Laugh Foundation for mental health awareness.",
-        experience: ["Actress", "Producer", "Founder, The Live Love Laugh Foundation", "Entrepreneur"],
-        skills: ["Acting", "Producing", "Entrepreneurship", "Mental Health Advocacy", "Brand Building"],
-        education: "Mount Carmel College, Bangalore"
-      },
-      instagram: {
-        bio: "💛 | @thelivellf | @82e.official",
-        followers: "78M",
-        following: "340",
-        posts: 1900,
-        themes: ["fashion", "Bollywood", "mental health", "family", "brand campaigns", "fitness"],
-        recentCaptions: [
-          "There is beauty in simplicity.",
-          "Mental health is not a destination, but a process.",
-          "Grateful for the journey. Every bit of it. 💛"
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Emotional depth", "Privacy", "Creative fulfillment", "Mental health awareness", "Love"],
-      hobbies: ["Badminton", "Yoga", "Reading", "Travel", "Fashion"],
-      interests: ["Cinema", "Mental health advocacy", "Fashion", "Entrepreneurship", "Wellness"],
-      qualities: ["Graceful", "Resilient", "Private", "Deep-feeling", "Elegant", "Strong advocate"],
-      personalityType: "ISFJ",
-      communicationStyle: "Graceful, understated, meaningful",
-      values: ["Mental health", "Love", "Grace", "Authenticity", "Family"],
-      ageRange: "35-40",
-      gender: "Female"
-    }
-  },
-  {
-    id: "person-13",
+    id: "person-21",
     name: "Casey Neistat",
+    region: "Global",
+    location: "New York, NY, USA",
     linkedin: "https://www.linkedin.com/in/caseyneistat/",
     instagram: "https://www.instagram.com/caseyneistat/",
     avatar: null,
     scraped: {
       linkedin: {
-        headline: "Filmmaker | YouTuber | Entrepreneur",
+        headline: "Filmmaker, Creator, Co-Founder of Beme (acquired by CNN)",
         location: "New York, NY",
-        summary: "Filmmaker and YouTuber. Co-founder of Beme (acquired by CNN). I make movies and tell stories.",
-        experience: ["Filmmaker", "YouTuber", "Co-founder, Beme", "CNN Creator"],
-        skills: ["Filmmaking", "Storytelling", "Entrepreneurship", "Video Production", "Creative Direction"],
-        education: "Self-taught"
+        summary: "Filmmaker. YouTube creator with 12M+ subscribers. Pioneer of daily vlogging. Co-founder of Beme.",
+        experience: ["Filmmaker", "YouTube Creator", "Co-Founder, Beme", "Director, HBO"],
+        skills: ["Filmmaking", "Storytelling", "Video Production", "Branding", "Creative Direction"],
+        education: "Self-taught filmmaker"
       },
       instagram: {
-        bio: "filmmaker in NYC 🎬",
-        followers: "3.5M",
-        following: "1.1K",
-        posts: 4500,
-        themes: ["filmmaking", "NYC life", "running", "technology", "travel", "family"],
+        bio: "filmmaker / father / runner / NYC 🗽",
+        followers: "3.2M",
+        following: "580",
+        posts: 2600,
+        themes: ["filmmaking", "marathon running", "NYC street culture", "skateboarding", "studio work"],
         recentCaptions: [
-          "Do what you can't.",
-          "The best camera is the one you have with you.",
-          "Life's too short for someday. Make it today."
+          "Do more than what you're told. Make things that matter.",
+          "Another 10 miles through the streets of New York. Running keeps the demons away.",
+          "Gear doesn't matter. Story is king."
         ]
       }
     },
     analysis: {
-      needs: ["Creative freedom", "Adventure", "Storytelling", "Family", "Independence"],
-      hobbies: ["Running", "Filmmaking", "Surfing", "Skateboarding", "Photography"],
-      interests: ["Filmmaking", "Technology", "NYC culture", "Running", "Entrepreneurship"],
-      qualities: ["Relentlessly creative", "Authentic", "Risk-taker", "Hardworking", "Rebellious spirit", "Family man"],
-      personalityType: "ISTP",
-      communicationStyle: "Raw, authentic, visual storytelling",
-      values: ["Authenticity", "Hard work", "Creativity", "Family", "Adventure"],
+      needs: ["Creative autonomy", "Physical exertion", "Adventure", "Authenticity", "Expression"],
+      hobbies: ["Marathon running", "Skateboarding (boosted board)", "Filmmaking", "Custom building / DIY", "Surfing"],
+      interests: ["Storytelling", "Cinematography", "NYC culture", "Endurance sports", "Technology"],
+      qualities: ["Relentless worker", "Maverick creative", "Raw & authentic", "Resilient", "Adventurous"],
+      personalityType: "ESTP",
+      communicationStyle: "Fast-paced, visual, unfiltered, cinematic",
+      values: ["Hard work", "Authenticity", "Family", "Creative courage", "Perseverance"],
       ageRange: "40-45",
       gender: "Male"
     }
   },
   {
-    id: "person-14",
+    id: "person-22",
     name: "Tabitha Brown",
+    region: "Global",
+    location: "Los Angeles, CA, USA",
     linkedin: "https://www.linkedin.com/in/iamtabithabrown/",
     instagram: "https://www.instagram.com/iamtabithabrown/",
     avatar: null,
     scraped: {
       linkedin: {
-        headline: "Actress | Author | Vegan Content Creator | Entrepreneur",
+        headline: "Actress, Author, Food Influencer, Entrepreneur | America's Mom",
         location: "Los Angeles, CA",
-        summary: "Actress, bestselling author, and vegan content creator. Known for my warm energy and plant-based cooking.",
-        experience: ["Content Creator", "Actress", "Author", "Entrepreneur"],
-        skills: ["Content Creation", "Cooking", "Acting", "Public Speaking", "Brand Partnerships"],
-        education: "N/A"
+        summary: "Emmy-winning host, NYT bestselling author, actress, and vegan influencer. Known for spreading warmth, vegan recipes, and unconditional love.",
+        experience: ["Host & Creator", "Author, Feeding the Soul", "Actress", "Entrepreneur, Donna's Recipe"],
+        skills: ["Acting", "Cooking", "Brand Ambassadorship", "Public Speaking", "Writing"],
+        education: "Miami International University of Art & Design"
       },
       instagram: {
-        bio: "That's your business 🤎 | Actress | Author | Vegan | God's kid | @tabithabrowncooks",
-        followers: "5.2M",
-        following: "780",
-        posts: 3200,
-        themes: ["vegan cooking", "positivity", "faith", "family", "fashion", "self-love"],
+        bio: "The World's Favorite Auntie ✨ | Actress, Author & Food Lover 🥑 | 'Cause that's your business! ❤️",
+        followers: "4.3M",
+        following: "1.4K",
+        posts: 4800,
+        themes: ["vegan cooking", "faith", "affirmations", "family", "haircare", "acting", "joy"],
         recentCaptions: [
-          "Hello there, beautiful! Have the most amazing day — because that's YOUR business!",
-          "You don't need anyone's permission to be happy.",
-          "Eating plants changed my life. Love what you feed yourself."
+          "Honey, don't let nobody steal your joy today. Because that's your business!",
+          "Food is love made edible. Cook with intention, eat with gratitude.",
+          "God is good, all the time. Rest in that peace."
         ]
       }
     },
     analysis: {
-      needs: ["Joy", "Nurturing others", "Faith", "Creative expression", "Love"],
-      hobbies: ["Vegan cooking", "Acting", "Fashion", "Gardening", "Singing"],
-      interests: ["Plant-based living", "Wellness", "Acting", "Entrepreneurship", "Faith"],
-      qualities: ["Radiantly warm", "Joyful", "Nurturing", "Faithful", "Authentic", "Encouraging"],
+      needs: ["Peace", "Faith", "Nurturing others", "Family harmony", "Joy"],
+      hobbies: ["Vegan cooking", "Gardening", "Singing", "Natural haircare", "Interior decorating"],
+      interests: ["Plant-based nutrition", "Spirituality", "Acting", "Mental health", "Southern culture"],
+      qualities: ["Radiantly warm", "Nurturing", "Down-to-earth", "Joyful", "Intuitive", "Unconditionally loving"],
       personalityType: "ESFJ",
-      communicationStyle: "Warm, motherly, joyful",
-      values: ["Love", "Joy", "Faith", "Kindness", "Health"],
-      ageRange: "40-45",
+      communicationStyle: "Southern, warm, loving, maternal, conversational",
+      values: ["Faith", "Love", "Kindness", "Family", "Peace"],
+      ageRange: "45-50",
       gender: "Female"
     }
   },
   {
-    id: "person-15",
+    id: "person-23",
     name: "Lex Fridman",
+    region: "Global",
+    location: "Austin, TX, USA",
     linkedin: "https://www.linkedin.com/in/lexfridman/",
     instagram: "https://www.instagram.com/lexfridman/",
     avatar: null,
     scraped: {
       linkedin: {
-        headline: "Research Scientist, MIT | Podcast Host | AI Researcher",
-        location: "Cambridge, MA",
-        summary: "Research scientist at MIT working on AI, deep learning, autonomous vehicles. Host of the Lex Fridman Podcast.",
-        experience: ["Research Scientist, MIT", "Podcast Host", "AI Researcher"],
-        skills: ["Artificial Intelligence", "Deep Learning", "Robotics", "Podcasting", "Research"],
-        education: "Drexel University (PhD)"
+        headline: "Research Scientist at MIT | Host of Lex Fridman Podcast",
+        location: "Austin, TX / Cambridge, MA",
+        summary: "AI researcher working on autonomous vehicles, human-robot interaction, and machine learning at MIT. Host of the Lex Fridman Podcast.",
+        experience: ["Research Scientist, MIT", "Host, Lex Fridman Podcast"],
+        skills: ["Artificial Intelligence", "Machine Learning", "Autonomous Vehicles", "Robotics", "Podcasting"],
+        education: "Drexel University (BS, MS, PhD)"
       },
       instagram: {
-        bio: "Podcast host 🎙 | AI researcher 🤖 | Jiu-jitsu 🥋 | Love ❤️",
-        followers: "3.8M",
-        following: "210",
-        posts: 1500,
-        themes: ["AI", "podcasting", "jiu-jitsu", "philosophy", "love", "existentialism"],
+        bio: "Lex Fridman Podcast 🎙️ | Research scientist at MIT 🤖 | Brazilian Jiu-Jitsu black belt 🥋",
+        followers: "2.3M",
+        following: "190",
+        posts: 950,
+        themes: ["artificial intelligence", "jiu-jitsu", "books", "philosophy", "robots", "guitars", "love"],
         recentCaptions: [
-          "Love is the answer. The question doesn't matter.",
-          "The most interesting conversations happen when you're willing to be vulnerable.",
-          "Train hard. Think deep. Love more."
+          "I believe love is the answer. Even in the coldest equations of the universe, compassion matters.",
+          "Long conversations with curious human beings remind me of the beauty of existence.",
+          "2 hours of hard sparring on the mats, then back to reading Russian literature."
         ]
       }
     },
     analysis: {
-      needs: ["Deep intellectual connection", "Love", "Physical discipline", "Meaning", "Quiet reflection"],
-      hobbies: ["Brazilian Jiu-Jitsu", "Guitar", "Running", "Deep conversations", "Programming"],
-      interests: ["Artificial intelligence", "Philosophy", "Martial arts", "Human consciousness", "Robotics"],
-      qualities: ["Deeply thoughtful", "Disciplined", "Romantic", "Intense", "Humble", "Philosophical"],
-      personalityType: "INFP",
-      communicationStyle: "Deep, contemplative, love-focused",
-      values: ["Love", "Truth", "Discipline", "Humility", "Knowledge"],
-      ageRange: "35-40",
-      gender: "Male"
-    }
-  },
-  {
-    id: "person-16",
-    name: "Huda Kattan",
-    linkedin: "https://www.linkedin.com/in/hudakattan/",
-    instagram: "https://www.instagram.com/hudabeauty/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Founder & CEO, Huda Beauty | Entrepreneur | Beauty Influencer",
-        location: "Dubai, UAE",
-        summary: "Founder of Huda Beauty and Wishful Skin. From beauty blogger to billionaire entrepreneur.",
-        experience: ["Founder & CEO, Huda Beauty", "Beauty Blogger", "Entrepreneur"],
-        skills: ["Entrepreneurship", "Beauty Industry", "Branding", "Social Media", "Product Development"],
-        education: "University of Michigan-Dearborn"
-      },
-      instagram: {
-        bio: "Founder @hudabeauty 💄 | @wishfulbeauty ✨ | Mom | Dreamer | Dubai 🇦🇪",
-        followers: "52M",
-        following: "1.5K",
-        posts: 7200,
-        themes: ["beauty", "makeup tutorials", "family", "entrepreneurship", "Dubai life", "self-care"],
-        recentCaptions: [
-          "Beauty is about feeling good in your own skin first.",
-          "Built this brand with my sisters. Family is everything.",
-          "Never let anyone tell you your dreams are too big. 💄✨"
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Creative expression", "Family bonds", "Business growth", "Beauty", "Recognition"],
-      hobbies: ["Makeup artistry", "Skincare routines", "Travel", "Family time", "Fashion"],
-      interests: ["Beauty industry", "Entrepreneurship", "Social media", "Middle Eastern culture", "Product innovation"],
-      qualities: ["Creative visionary", "Family-oriented", "Business-savvy", "Glamorous", "Determined", "Generous"],
-      personalityType: "ESFP",
-      communicationStyle: "Glamorous, warm, business-minded",
-      values: ["Family", "Beauty", "Empowerment", "Hard work", "Creativity"],
+      needs: ["Love", "Intellectual depth", "Physical discipline", "Understanding human nature", "Sincerity"],
+      hobbies: ["Brazilian Jiu-Jitsu", "Guitar playing", "Reading Russian classics", "Running", "Chess"],
+      interests: ["Artificial General Intelligence", "Space exploration", "Philosophy of mind", "History of war and peace"],
+      qualities: ["Earnest", "Profoundly romantic", "Intellectually rigorous", "Humble", "Gentle-spoken", "Disciplined"],
+      personalityType: "INTP",
+      communicationStyle: "Earnest, quiet, deeply philosophical, gentle",
+      values: ["Love", "Truth", "Discipline", "Curiosity", "Kindness"],
       ageRange: "40-45",
-      gender: "Female"
-    }
-  },
-  {
-    id: "person-17",
-    name: "Nas Daily",
-    linkedin: "https://www.linkedin.com/in/nuseir/",
-    instagram: "https://www.instagram.com/nasdaily/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Content Creator | Entrepreneur | World Traveler",
-        location: "Singapore",
-        summary: "Created 1000 daily videos about the world. Founder of Nas Academy and Nas.io. Harvard dropout turned creator.",
-        experience: ["Content Creator", "Founder, Nas Academy", "Former Software Engineer, Venmo"],
-        skills: ["Video Production", "Storytelling", "Entrepreneurship", "Public Speaking", "Community Building"],
-        education: "Harvard University (dropped out)"
-      },
-      instagram: {
-        bio: "1000 daily videos ✅ | @nas.academy 🎓 | 50M+ followers across platforms 🌍",
-        followers: "9.2M",
-        following: "890",
-        posts: 5100,
-        themes: ["travel", "culture", "education", "human stories", "technology", "entrepreneurship"],
-        recentCaptions: [
-          "That's 1 minute. See you tomorrow!",
-          "The world is more connected than you think.",
-          "Every person has a story worth telling."
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Adventure", "Human connection", "Storytelling", "Impact", "Growth"],
-      hobbies: ["Traveling", "Video editing", "Meeting people", "Learning cultures", "Photography"],
-      interests: ["World cultures", "Technology", "Education", "Entrepreneurship", "Human interest stories"],
-      qualities: ["Curious explorer", "Optimistic", "Disciplined creator", "Culturally aware", "Entrepreneurial", "Energetic"],
-      personalityType: "ENFP",
-      communicationStyle: "Quick, visual, globally minded",
-      values: ["Curiosity", "Connection", "Education", "Diversity", "Hard work"],
-      ageRange: "30-35",
       gender: "Male"
     }
   },
   {
-    id: "person-18",
-    name: "Jameela Jamil",
-    linkedin: "https://www.linkedin.com/in/jameelajamil/",
-    instagram: "https://www.instagram.com/jameelajamil/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Actress | Activist | Writer | Host",
-        location: "Los Angeles, CA",
-        summary: "Actress (The Good Place, She-Hulk). Founder of I Weigh. Activist for body positivity and mental health.",
-        experience: ["Actress", "Activist", "Writer", "Founder, I Weigh"],
-        skills: ["Acting", "Writing", "Activism", "Public Speaking", "Hosting"],
-        education: "Queen's College, London"
-      },
-      instagram: {
-        bio: "Actress 🎭 | @i_weigh founder ⚖️ | Body neutrality advocate | She/Her | Professional oversharer",
-        followers: "3.9M",
-        following: "2.1K",
-        posts: 3800,
-        themes: ["body positivity", "activism", "acting", "feminism", "mental health", "humor"],
-        recentCaptions: [
-          "I weigh: kindness, resilience, bad jokes, and a refusal to shut up.",
-          "Diet culture is a scam. Your body is not the problem.",
-          "Being loud about what matters isn't annoying — it's necessary."
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Justice", "Self-expression", "Authenticity", "Acceptance", "Humor"],
-      hobbies: ["Writing", "Comedy", "DJing", "Cooking", "Gaming"],
-      interests: ["Body positivity", "Feminism", "Mental health", "Acting", "Social justice"],
-      qualities: ["Outspoken", "Funny", "Passionate activist", "Resilient", "Unapologetically bold", "Compassionate"],
-      personalityType: "ENFP",
-      communicationStyle: "Bold, funny, activist-driven",
-      values: ["Justice", "Equality", "Authenticity", "Mental health", "Body acceptance"],
-      ageRange: "35-40",
-      gender: "Female"
-    }
-  },
-  {
-    id: "person-19",
+    id: "person-24",
     name: "Ali Abdaal",
+    region: "Global",
+    location: "London, UK",
     linkedin: "https://www.linkedin.com/in/aliabdaal/",
     instagram: "https://www.instagram.com/aliabdaal/",
     avatar: null,
@@ -735,394 +997,76 @@ const SEED_PEOPLE = [
       linkedin: {
         headline: "Doctor turned YouTuber | Author of Feel-Good Productivity | Entrepreneur",
         location: "London, UK",
-        summary: "Former doctor. YouTube creator (5M+ subscribers). Author. I help people be more productive while actually enjoying the process.",
-        experience: ["YouTuber", "Author", "Former NHS Doctor", "Entrepreneur"],
-        skills: ["Productivity", "Content Creation", "Writing", "Teaching", "Entrepreneurship"],
+        summary: "Former junior doctor in NHS. YouTube creator (5M+ subscribers). Author of Feel-Good Productivity. Exploring how to build an enjoyable and meaningful life.",
+        experience: ["YouTuber & Author", "Former NHS Doctor", "Founder, Part-Time YouTuber Academy"],
+        skills: ["Productivity", "Content Creation", "Writing", "Teaching", "Medicine"],
         education: "University of Cambridge (Medicine)"
       },
       instagram: {
-        bio: "Doctor → YouTuber → Author 📖 | Feel-Good Productivity 🌟 | Making work feel less like work",
+        bio: "Doctor turned creator 👨‍⚕️🎥 | Author of Feel-Good Productivity 📖 | Helping you do more of what matters ✨",
         followers: "1.2M",
-        following: "620",
-        posts: 2400,
-        themes: ["productivity", "reading", "tech gadgets", "medicine", "entrepreneurship", "books"],
-        recentCaptions: [
-          "Productivity isn't about doing more. It's about enjoying what you do.",
-          "My morning routine as a former doctor turned creator.",
-          "5 books that changed how I think about work."
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Learning", "Teaching", "Creative freedom", "Balance", "Meaningful work"],
-      hobbies: ["Reading", "Piano", "Magic tricks", "Gaming", "Tennis"],
-      interests: ["Productivity science", "Medicine", "YouTube creation", "Book writing", "Technology"],
-      qualities: ["Intellectual", "Approachable", "Systematic", "Playful learner", "Driven", "Balanced"],
-      personalityType: "ENTP",
-      communicationStyle: "Clear, educational, relatable",
-      values: ["Learning", "Joy in work", "Sharing knowledge", "Balance", "Growth"],
-      ageRange: "30-35",
-      gender: "Male"
-    }
-  },
-  {
-    id: "person-20",
-    name: "Priyanka Chopra Jonas",
-    linkedin: "https://www.linkedin.com/in/priyankachopra/",
-    instagram: "https://www.instagram.com/priyankachopra/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Actor | Producer | UNICEF Goodwill Ambassador | Entrepreneur",
-        location: "Los Angeles, CA / Mumbai, India",
-        summary: "Global icon. Award-winning actress. UNICEF Goodwill Ambassador. Founder of Anomaly Haircare and Sona restaurant.",
-        experience: ["Actor", "Producer", "UNICEF Ambassador", "Entrepreneur"],
-        skills: ["Acting", "Producing", "Entrepreneurship", "Philanthropy", "Brand Building"],
-        education: "Jai Hind College, Mumbai"
-      },
-      instagram: {
-        bio: "Anomaly 💜 | Sona NYC 🍽 | UNICEF Goodwill Ambassador 🌍 | Mama 👶",
-        followers: "91M",
-        following: "490",
-        posts: 6100,
-        themes: ["Bollywood", "Hollywood", "motherhood", "fashion", "philanthropy", "travel"],
-        recentCaptions: [
-          "Dream big. Work hard. Stay grounded.",
-          "Motherhood is my greatest role yet. 💜",
-          "Celebrating culture, one story at a time."
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Global impact", "Family", "Cultural bridge-building", "Creative fulfillment", "Love"],
-      hobbies: ["Cooking Indian food", "Travel", "Fashion", "Reading", "Family time"],
-      interests: ["Cinema (Bollywood + Hollywood)", "Philanthropy", "Entrepreneurship", "Culture", "Motherhood"],
-      qualities: ["Globally minded", "Ambitious", "Graceful", "Strong", "Cultural bridge", "Warm"],
-      personalityType: "ESTJ",
-      communicationStyle: "Confident, global, graceful",
-      values: ["Family", "Culture", "Hard work", "Philanthropy", "Representation"],
-      ageRange: "40-45",
-      gender: "Female"
-    }
-  },
-  {
-    id: "person-21",
-    name: "Peter McKinnon",
-    linkedin: "https://www.linkedin.com/in/petermckinnon/",
-    instagram: "https://www.instagram.com/petermckinnon/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Photographer | Filmmaker | YouTuber | Coffee Enthusiast",
-        location: "Toronto, Canada",
-        summary: "I make photos, videos, and drink way too much coffee. Teaching the world about cameras and creativity.",
-        experience: ["YouTuber", "Photographer", "Filmmaker", "Brand Collaborator"],
-        skills: ["Photography", "Filmmaking", "Video Editing", "Content Creation", "Coffee"],
-        education: "Self-taught"
-      },
-      instagram: {
-        bio: "📸 Photographer | 🎬 Filmmaker | ☕ Coffee lover | 🇨🇦 Toronto",
-        followers: "3.1M",
-        following: "1.8K",
-        posts: 3400,
-        themes: ["photography", "filmmaking", "coffee", "nature", "cameras", "creative process"],
-        recentCaptions: [
-          "The best photos happen when you stop overthinking.",
-          "Coffee first. Camera second. Everything else third.",
-          "Nature is the original content creator. 📸"
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Creative expression", "Nature", "Routine", "Community", "Visual beauty"],
-      hobbies: ["Coffee brewing", "Camping", "Photography", "Card magic", "Hiking"],
-      interests: ["Photography", "Filmmaking", "Coffee culture", "Nature", "Camera technology"],
-      qualities: ["Visually artistic", "Enthusiastic teacher", "Laid-back", "Creative", "Nature-loving", "Passionate"],
-      personalityType: "ISFP",
-      communicationStyle: "Enthusiastic, visual, down-to-earth",
-      values: ["Creativity", "Nature", "Teaching", "Authenticity", "Simplicity"],
-      ageRange: "35-40",
-      gender: "Male"
-    }
-  },
-  {
-    id: "person-22",
-    name: "Emma Chamberlain",
-    linkedin: "https://www.linkedin.com/in/emma-chamberlain-2a8891191/",
-    instagram: "https://www.instagram.com/emmachamberlain/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Content Creator | Entrepreneur | Founder of Chamberlain Coffee",
-        location: "Los Angeles, CA",
-        summary: "YouTuber, podcast host, and founder of Chamberlain Coffee. Redefining internet culture.",
-        experience: ["Content Creator", "Founder, Chamberlain Coffee", "Podcast Host"],
-        skills: ["Content Creation", "Entrepreneurship", "Branding", "Social Media", "Fashion"],
-        education: "N/A (career started at 16)"
-      },
-      instagram: {
-        bio: "@chamberlaincoffee ☕ | just a gal 🌸",
-        followers: "16.8M",
-        following: "780",
+        following: "480",
         posts: 1200,
-        themes: ["fashion", "coffee", "minimalism", "authenticity", "Gen Z culture", "thrifting"],
+        themes: ["productivity", "books", "habits", "entrepreneurship", "travel", "philosophy"],
         recentCaptions: [
-          "idk i just like coffee",
-          "outfit of the day or whatever",
-          "being yourself is quite literally the easiest thing to do"
+          "Productivity isn't about working harder; it's about finding joy in what you do.",
+          "Life gets so much better when you stop taking yourself so seriously.",
+          "What would this look like if it were fun?"
         ]
       }
     },
     analysis: {
-      needs: ["Authenticity", "Creative freedom", "Solitude", "Simplicity", "Genuine connections"],
-      hobbies: ["Coffee", "Thrift shopping", "Cooking", "Reading", "Fashion"],
-      interests: ["Fashion", "Coffee culture", "Sustainability", "Interior design", "Philosophy"],
-      qualities: ["Authentically Gen Z", "Introspective", "Witty", "Minimalist", "Independent", "Self-aware"],
-      personalityType: "INTP",
-      communicationStyle: "Deadpan humor, stream-of-consciousness, authentic",
-      values: ["Authenticity", "Sustainability", "Independence", "Simplicity", "Self-expression"],
-      ageRange: "20-25",
-      gender: "Female"
-    }
-  },
-  {
-    id: "person-23",
-    name: "Steven Bartlett",
-    linkedin: "https://www.linkedin.com/in/stevenbartlett-123/",
-    instagram: "https://www.instagram.com/steven/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Founder, Social Chain | Dragon on Dragons' Den | Host, Diary of a CEO",
-        location: "London, UK",
-        summary: "Built Social Chain at 22, took it public at 27. Youngest ever Dragon on Dragons' Den. Host of Diary of a CEO podcast.",
-        experience: ["Founder, Social Chain", "Dragon, Dragons' Den", "Podcast Host"],
-        skills: ["Entrepreneurship", "Investing", "Marketing", "Podcasting", "Leadership"],
-        education: "Manchester Metropolitan University (dropped out)"
-      },
-      instagram: {
-        bio: "Diary of a CEO 🎙 | Dragon @dragonsdentv 🐉 | Building things that matter",
-        followers: "5.6M",
-        following: "340",
-        posts: 2800,
-        themes: ["entrepreneurship", "podcast clips", "mental health", "fitness", "business advice"],
-        recentCaptions: [
-          "The quality of your questions determines the quality of your life.",
-          "You can't outsource your mental health.",
-          "The best investment you'll ever make is in yourself."
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Achievement", "Deep understanding", "Physical health", "Meaningful relationships", "Growth"],
-      hobbies: ["Fitness training", "Podcasting", "Reading", "Investing", "Travel"],
-      interests: ["Entrepreneurship", "Psychology", "Health optimization", "Investing", "Human behavior"],
-      qualities: ["Young achiever", "Deep thinker", "Health-conscious", "Ambitious", "Emotionally intelligent", "Driven"],
-      personalityType: "ENTJ",
-      communicationStyle: "Candid, intellectual, interview-style",
-      values: ["Growth", "Health", "Honesty", "Achievement", "Self-awareness"],
+      needs: ["Play", "Growth", "Intellectual curiosity", "Connection", "Autonomy"],
+      hobbies: ["Reading non-fiction", "Guitar & singing", "Gaming", "Weightlifting", "Board games"],
+      interests: ["Behavioral psychology", "Productivity systems", "Tech gadgets", "Philosophy of happiness"],
+      qualities: ["Thoughtful", "Inquisitive", "Optimistic", "Methodical", "Playful", "Generous"],
+      personalityType: "ENFP",
+      communicationStyle: "Curious, cheerful, structured, analytical",
+      values: ["Joy", "Continuous learning", "Generosity", "Kindness", "Freedom"],
       ageRange: "30-35",
       gender: "Male"
-    }
-  },
-  {
-    id: "person-24",
-    name: "Simone Giertz",
-    linkedin: "https://www.linkedin.com/in/simonegiertz/",
-    instagram: "https://www.instagram.com/simonegiertz/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Inventor | YouTuber | Queen of Shitty Robots",
-        location: "San Francisco, CA",
-        summary: "I build robots that are terrible at their jobs. YouTuber, inventor, and brain tumor survivor.",
-        experience: ["YouTuber", "Inventor", "Speaker", "Product Designer"],
-        skills: ["Robotics", "Engineering", "Content Creation", "Product Design", "Comedy"],
-        education: "Hyper Island, Sweden"
-      },
-      instagram: {
-        bio: "Queen of Shitty Robots 🤖 | Building things that barely work | Brain tumor survivor 💪",
-        followers: "1.9M",
-        following: "1.2K",
-        posts: 1600,
-        themes: ["robots", "engineering", "comedy", "health", "woodworking", "creativity"],
-        recentCaptions: [
-          "Built a robot that brushes my teeth. It... mostly works.",
-          "Failure is just engineering with extra steps.",
-          "Life after brain surgery: still building, still laughing."
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Creative experimentation", "Humor", "Health", "Community", "Freedom to fail"],
-      hobbies: ["Building robots", "Woodworking", "Sailing", "Comedy", "3D printing"],
-      interests: ["Robotics", "Engineering humor", "Making/DIY", "Health advocacy", "Design"],
-      qualities: ["Hilariously creative", "Resilient", "Self-deprecating humor", "Brave", "Inventive", "Joyful"],
-      personalityType: "ENTP",
-      communicationStyle: "Funny, self-deprecating, creative",
-      values: ["Creativity", "Humor", "Resilience", "Learning from failure", "Joy"],
-      ageRange: "30-35",
-      gender: "Female"
     }
   },
   {
     id: "person-25",
-    name: "Naval Ravikant",
-    linkedin: "https://www.linkedin.com/in/navalr/",
-    instagram: "https://www.instagram.com/naval/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Co-Founder, AngelList | Philosopher | Angel Investor",
-        location: "San Francisco, CA",
-        summary: "Co-founder of AngelList. Angel investor. I think about how to be happy, healthy, and wealthy.",
-        experience: ["Co-Founder, AngelList", "Angel Investor", "Philosopher-Entrepreneur"],
-        skills: ["Investing", "Philosophy", "Entrepreneurship", "Strategy", "Writing"],
-        education: "Dartmouth College"
-      },
-      instagram: {
-        bio: "🧘",
-        followers: "1.4M",
-        following: "89",
-        posts: 420,
-        themes: ["philosophy", "wealth", "happiness", "meditation", "reading", "minimalism"],
-        recentCaptions: [
-          "Desire is a contract you make with yourself to be unhappy until you get what you want.",
-          "A fit body, a calm mind, a house full of love. These things cannot be bought.",
-          "Read what you love until you love to read."
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Freedom", "Wisdom", "Peace of mind", "Deep thinking", "Simplicity"],
-      hobbies: ["Reading", "Meditation", "Walking", "Writing aphorisms", "Investing"],
-      interests: ["Philosophy", "Wealth creation", "Happiness science", "Technology", "Consciousness"],
-      qualities: ["Deeply philosophical", "Minimalist", "Wise", "Contrarian thinker", "Calm", "Profound"],
-      personalityType: "INTP",
-      communicationStyle: "Aphoristic, profound, minimalist",
-      values: ["Freedom", "Wisdom", "Happiness", "Truth", "Specific knowledge"],
-      ageRange: "50-55",
-      gender: "Male"
-    }
-  },
-  {
-    id: "person-26",
-    name: "Zarna Garg",
-    linkedin: "https://www.linkedin.com/in/zarna-garg-7b9a7a1b2/",
-    instagram: "https://www.instagram.com/zarnagarg/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Comedian | Writer | Indian Mom Extraordinaire",
-        location: "New York, NY",
-        summary: "Stand-up comedian known for the 'Indian Mom' character. Bringing desi humor to mainstream comedy.",
-        experience: ["Stand-up Comedian", "Writer", "Content Creator"],
-        skills: ["Comedy", "Writing", "Public Speaking", "Content Creation", "Storytelling"],
-        education: "University of Mumbai"
-      },
-      instagram: {
-        bio: "Indian Mom Comedian 🇮🇳😂 | NYC | Making desi parents laugh (and cringe)",
-        followers: "620K",
-        following: "1.1K",
-        posts: 1800,
-        themes: ["Indian comedy", "parenting humor", "cultural observations", "family", "NYC life"],
-        recentCaptions: [
-          "My son said he wants to be an artist. I said, 'An artist? In THIS economy?'",
-          "Indian parenting: where guilt is the gift that keeps on giving.",
-          "NYC is just India with better traffic laws. Just kidding, no one follows them here either."
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Laughter", "Family connection", "Cultural expression", "Recognition", "Community"],
-      hobbies: ["Stand-up comedy", "Cooking Indian food", "Writing", "People watching", "Shopping"],
-      interests: ["Comedy", "Indian culture", "Parenting", "NYC life", "Immigrant experience"],
-      qualities: ["Hilarious", "Culturally rich", "Family-centered", "Observant", "Warm", "Relatable"],
-      personalityType: "ESFP",
-      communicationStyle: "Comedic, cultural, family-centered",
-      values: ["Family", "Humor", "Culture", "Hard work", "Community"],
-      ageRange: "45-50",
-      gender: "Female"
-    }
-  },
-  {
-    id: "person-27",
-    name: "MKBHD (Marques Brownlee)",
+    name: "Marques Brownlee",
+    region: "Global",
+    location: "Kearny, NJ, USA",
     linkedin: "https://www.linkedin.com/in/mkbhd/",
     instagram: "https://www.instagram.com/mkbhd/",
     avatar: null,
     scraped: {
       linkedin: {
-        headline: "Tech YouTuber | Creator | Ultimate Frisbee Player",
-        location: "New Jersey, USA",
-        summary: "Making tech videos since 2009. 19M+ YouTube subscribers. Best tech reviewer on the planet.",
-        experience: ["YouTuber", "Tech Reviewer", "Ultimate Frisbee Player", "Founder, The Studio"],
-        skills: ["Technology Review", "Video Production", "Photography", "Public Speaking", "Branding"],
+        headline: "YouTuber, Tech Creator, Professional Ultimate Frisbee Player (MKBHD)",
+        location: "Greater New York Area",
+        summary: "Tech reviewer on YouTube (18M+ subscribers). Creator of the Waveform podcast. Professional ultimate frisbee player (New York Empire).",
+        experience: ["Creator, MKBHD", "Host, Waveform Podcast", "Professional Athlete, AUDL"],
+        skills: ["Tech Review", "Video Production", "Cinematography", "Athletics", "Digital Media"],
         education: "Stevens Institute of Technology"
       },
       instagram: {
-        bio: "MKBHD 📱 | Tech reviewer | Ultimate frisbee 🥏 | Studio @thestudio",
-        followers: "5.7M",
-        following: "1.3K",
-        posts: 2900,
-        themes: ["technology", "gadgets", "Tesla", "ultimate frisbee", "studio setup", "minimalism"],
+        bio: "Quality tech videos | Professional ultimate frisbee player 🥏 | Host of @wvfrmpodcast 🎙️",
+        followers: "4.7M",
+        following: "590",
+        posts: 1900,
+        themes: ["tech reviews", "smartphones", "electric vehicles", "ultimate frisbee", "cameras", "sneakers"],
         recentCaptions: [
-          "This phone is almost perfect. Almost.",
-          "Studio tour 2024 — everything is custom.",
-          "Ultimate frisbee nationals this weekend. Let's go. 🥏"
+          "Crispy setups make crispy videos. Perfection is in the small details.",
+          "Back on the field. Ultimate frisbee is my mental reset.",
+          "So I've been using this phone for the past two weeks... and we need to talk."
         ]
       }
     },
     analysis: {
-      needs: ["Excellence", "Innovation", "Physical activity", "Creative control", "Authenticity"],
-      hobbies: ["Ultimate frisbee", "Car collecting (Tesla)", "Tech testing", "Photography", "Golf"],
-      interests: ["Consumer technology", "Electric vehicles", "Sports", "Video production", "Design"],
-      qualities: ["Perfectionist", "Calm authority", "Athletic", "Tech-savvy", "Minimalist taste", "Consistent"],
-      personalityType: "ISTJ",
-      communicationStyle: "Clean, authoritative, balanced",
-      values: ["Quality", "Honesty", "Consistency", "Design", "Excellence"],
+      needs: ["Craftsmanship", "Physical competition", "Precision", "Calm", "Creativity"],
+      hobbies: ["Ultimate frisbee", "Golf", "Sneaker collecting", "Sim racing", "Cinematography"],
+      interests: ["Consumer technology", "Electric vehicles", "Camera systems", "Industrial design"],
+      qualities: ["Methodical", "Calm", "Athletic", "Obsessed with quality", "Level-headed", "Authentic"],
+      personalityType: "ISTP",
+      communicationStyle: "Crisp, concise, balanced, smooth",
+      values: ["Quality", "Integrity", "Hard work", "Objectivity", "Sportsmanship"],
       ageRange: "30-35",
       gender: "Male"
-    }
-  },
-  {
-    id: "person-28",
-    name: "Liza Koshy",
-    linkedin: "https://www.linkedin.com/in/lizakoshy/",
-    instagram: "https://www.instagram.com/lizakoshy/",
-    avatar: null,
-    scraped: {
-      linkedin: {
-        headline: "Actress | Creator | Producer | Entrepreneur",
-        location: "Los Angeles, CA",
-        summary: "Actress, creator, and entrepreneur. Known for double dare hosting, acting, and comedy content.",
-        experience: ["Actress", "Producer", "Content Creator", "Host"],
-        skills: ["Acting", "Comedy", "Hosting", "Content Creation", "Entrepreneurship"],
-        education: "University of Houston (attended)"
-      },
-      instagram: {
-        bio: "just a lil gal with big dreams 🌈 | actress | creator | not a doctor",
-        followers: "18.2M",
-        following: "930",
-        posts: 2100,
-        themes: ["comedy", "acting", "fashion", "fitness", "positivity", "behind-the-scenes"],
-        recentCaptions: [
-          "woke up and chose comedy. again.",
-          "your girl got a new movie coming out and YES i did my own stunts (no i didn't)",
-          "self care is doing something that scares you and then eating ice cream after"
-        ]
-      }
-    },
-    analysis: {
-      needs: ["Joy", "Creative expression", "Connection", "Adventure", "Laughter"],
-      hobbies: ["Comedy", "Dance", "Fitness", "Cooking", "Hiking"],
-      interests: ["Acting", "Comedy", "Fitness", "Fashion", "Social activism"],
-      qualities: ["Infectiously funny", "Energetic", "Down-to-earth", "Spontaneous", "Kind", "Multi-talented"],
-      personalityType: "ENFP",
-      communicationStyle: "Silly, energetic, self-deprecating",
-      values: ["Joy", "Kindness", "Creativity", "Inclusivity", "Fun"],
-      ageRange: "25-30",
-      gender: "Female"
     }
   }
 ];

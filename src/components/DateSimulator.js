@@ -137,7 +137,7 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
                 >
                   {people.map(p => (
                     <option key={p.id} value={p.id} disabled={p.id === person2Id}>
-                      {p.name} ({p.analysis?.personalityType || 'Agent'})
+                      {p.region === 'India' ? '🇮🇳 ' : '🌍 '}{p.name} ({p.analysis?.personalityType || 'Agent'})
                     </option>
                   ))}
                 </select>
@@ -146,6 +146,20 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
 
             {p1 && (
               <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>
+                  <span style={{
+                    fontSize: '0.72rem',
+                    padding: '2px 8px',
+                    borderRadius: 'var(--radius-full)',
+                    background: p1.region === 'India' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(56, 189, 248, 0.15)',
+                    color: p1.region === 'India' ? 'var(--gold-400)' : 'var(--sky-400)',
+                    border: p1.region === 'India' ? '1px solid rgba(245, 158, 11, 0.3)' : '1px solid rgba(56, 189, 248, 0.3)',
+                    fontWeight: 600
+                  }}>
+                    {p1.region === 'India' ? '🇮🇳 India' : '🌍 Global'}
+                  </span>
+                  <span>📍 {p1.location || p1.scraped?.linkedin?.location}</span>
+                </div>
                 <p style={{ marginBottom: '6px' }}><strong>Archetype:</strong> {p1.analysis?.personalityType} • {p1.analysis?.communicationStyle}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
                   {p1.analysis?.interests?.slice(0, 3).map((i, idx) => (
@@ -188,7 +202,7 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
                 >
                   {people.map(p => (
                     <option key={p.id} value={p.id} disabled={p.id === person1Id}>
-                      {p.name} ({p.analysis?.personalityType || 'Agent'})
+                      {p.region === 'India' ? '🇮🇳 ' : '🌍 '}{p.name} ({p.analysis?.personalityType || 'Agent'})
                     </option>
                   ))}
                 </select>
@@ -197,6 +211,20 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
 
             {p2 && (
               <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>
+                  <span style={{
+                    fontSize: '0.72rem',
+                    padding: '2px 8px',
+                    borderRadius: 'var(--radius-full)',
+                    background: p2.region === 'India' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(56, 189, 248, 0.15)',
+                    color: p2.region === 'India' ? 'var(--gold-400)' : 'var(--sky-400)',
+                    border: p2.region === 'India' ? '1px solid rgba(245, 158, 11, 0.3)' : '1px solid rgba(56, 189, 248, 0.3)',
+                    fontWeight: 600
+                  }}>
+                    {p2.region === 'India' ? '🇮🇳 India' : '🌍 Global'}
+                  </span>
+                  <span>📍 {p2.location || p2.scraped?.linkedin?.location}</span>
+                </div>
                 <p style={{ marginBottom: '6px' }}><strong>Archetype:</strong> {p2.analysis?.personalityType} • {p2.analysis?.communicationStyle}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
                   {p2.analysis?.interests?.slice(0, 3).map((i, idx) => (

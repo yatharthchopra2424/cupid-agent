@@ -22,16 +22,16 @@ export default function HeroSection({ peopleCount, datesCount, onStartDating, on
           <span>💬 Start Date Simulator</span>
         </button>
         <button className="btn btn-lg btn-secondary" onClick={onExplore}>
-          <span>👥 Explore 28 Agents</span>
+          <span>👥 Explore {peopleCount || 25}+ Agents</span>
         </button>
         <button className="btn btn-lg btn-ghost" onClick={onRunAll}>
-          <span>⚡ Run All {peopleCount ? Math.round((peopleCount * (peopleCount - 1)) / 2) : 378} Dates</span>
+          <span>⚡ Run All {peopleCount ? Math.round((peopleCount * (peopleCount - 1)) / 2) : 300} Dates</span>
         </button>
       </div>
 
       <div className="hero-stats">
         <div className="hero-stat">
-          <div className="hero-stat-number">{peopleCount || 28}</div>
+          <div className="hero-stat-number">{peopleCount || 25}+</div>
           <div className="hero-stat-label">Real People & Agents</div>
         </div>
         <div className="hero-stat">
@@ -40,13 +40,13 @@ export default function HeroSection({ peopleCount, datesCount, onStartDating, on
         </div>
         <div className="hero-stat">
           <div className="hero-stat-number">
-            {peopleCount ? Math.round((peopleCount * (peopleCount - 1)) / 2) : 378}
+            {peopleCount ? Math.round((peopleCount * (peopleCount - 1)) / 2) : 300}
           </div>
           <div className="hero-stat-label">Possible Pairings</div>
         </div>
         <div className="hero-stat">
-          <div className="hero-stat-number">100%</div>
-          <div className="hero-stat-label">Autonomous Synergy</div>
+          <div className="hero-stat-number">🇮🇳 + 🌍</div>
+          <div className="hero-stat-label">Indian & Global Cohorts</div>
         </div>
       </div>
 
@@ -55,7 +55,7 @@ export default function HeroSection({ peopleCount, datesCount, onStartDating, on
           <div className="step-number">1</div>
           <h3 className="step-title">Real Profiles Sourced</h3>
           <p className="step-description">
-            28 real public figures with verified LinkedIn & Instagram links. Scrapes public bios, captions, career milestones, and posts.
+            Real public figures with verified LinkedIn & Instagram links. Features Indian visionaries at the top alongside global pioneers.
           </p>
         </div>
 

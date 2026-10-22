@@ -62,7 +62,7 @@ export default function Home() {
   // Handle Simulate All Dates
   const handleRunAllDates = async () => {
     setIsSimulatingAll(true);
-    showToast('Simulating autonomous dates across all 28 agent pairs...', 'success');
+    showToast(`Simulating autonomous dates across all ${people.length} agent pairs...`, 'success');
 
     try {
       const dateRes = await fetch('/api/date', {
@@ -99,7 +99,7 @@ export default function Home() {
 
   // Handle Reset to initial seed
   const handleReset = async () => {
-    if (!confirm('Reset all simulated dates and restore the initial 28 verified agents?')) return;
+    if (!confirm(`Reset all simulated dates and restore the initial ${people.length} verified agents?`)) return;
 
     setLoading(true);
     try {
@@ -113,7 +113,7 @@ export default function Home() {
         setPeople(data.people || []);
         setDates([]);
         setRankings({});
-        showToast('Store reset to original 28 verified agent profiles.');
+        showToast('Store reset to original verified agent profiles.');
       }
     } catch (err) {
       showToast('Failed to reset store', 'error');

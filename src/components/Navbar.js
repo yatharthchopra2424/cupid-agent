@@ -47,7 +47,7 @@ export default function Navbar({ activeTab, setActiveTab, onRunAllDates, onReset
           className="btn btn-sm btn-primary"
           onClick={onRunAllDates}
           disabled={isSimulating}
-          title="Run autonomous dates across all 28 agent pairs"
+          title="Run autonomous dates across all agent pairs"
         >
           <span>{isSimulating ? '⏳ Dating...' : '⚡ Simulate All Dates'}</span>
         </button>
@@ -55,7 +55,7 @@ export default function Navbar({ activeTab, setActiveTab, onRunAllDates, onReset
         <button
           className="btn btn-sm btn-ghost"
           onClick={onReset}
-          title="Reset store to original 28 seed profiles"
+          title="Reset store to original seed profiles"
         >
           <span>🔄 Reset</span>
         </button>

@@ -5,16 +5,22 @@ import { useState } from 'react';
 export default function RankingsView({ people, rankings, onSimulateAll, onSelectDate, isSimulating }) {
   const [selectedPersonId, setSelectedPersonId] = useState(people[0]?.id || '');
   const [tierFilter, setTierFilter] = useState('ALL');
+  const [suitorRegionFilter, setSuitorRegionFilter] = useState('ALL');
 
   const selectedPerson = people.find(p => p.id === selectedPersonId) || people[0];
   const personRankings = rankings?.[selectedPersonId];
   const hasRankings = rankings && Object.keys(rankings).length > 0;
 
-  // Filter matches by tier if needed
+  // Filter matches by tier and region
   const matches = personRankings?.matches || [];
-  const filteredMatches = tierFilter === 'ALL'
-    ? matches
-    : matches.filter(m => m.tier === tierFilter);
+  const filteredMatches = matches.filter(m => {
+    if (tierFilter !== 'ALL' && m.tier !== tierFilter) return false;
+    if (suitorRegionFilter !== 'ALL') {
+      const partner = people.find(p => p.id === m.partnerId);
+      if (partner?.region !== suitorRegionFilter) return false;
+    }
+    return true;
+  });
 
   // Compute top global pairings across all people
   const topGlobalPairs = [];
@@ -44,6 +50,9 @@ export default function RankingsView({ people, rankings, onSimulateAll, onSelect
     <div style={{ marginTop: '2rem' }}>
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 12px', borderRadius: 'var(--radius-full)', background: 'rgba(217, 70, 239, 0.1)', color: 'var(--primary-300)', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.75rem' }}>
+            <span>🏆</span> Compatibility Intelligence & Suitor Leaderboards
+          </div>
           <h2 className="page-title">Agent Fit & Compatibility Rankings</h2>
           <p className="page-subtitle">
             Every agent ranks their suitors from best fit to worst, backed by multi-factor analysis:
@@ -56,7 +65,7 @@ export default function RankingsView({ people, rankings, onSimulateAll, onSelect
           onClick={onSimulateAll}
           disabled={isSimulating}
         >
-          {isSimulating ? '⏳ Simulating 378 Dates...' : '⚡ Re-compute All Rankings'}
+          {isSimulating ? '⏳ Simulating Dates...' : '⚡ Re-compute All Rankings'}
         </button>
       </div>
 
@@ -65,14 +74,14 @@ export default function RankingsView({ people, rankings, onSimulateAll, onSelect
           <div className="icon">🏆</div>
           <h3>No Dating Rankings Generated Yet</h3>
           <p style={{ marginBottom: '1.5rem' }}>
-            Run the autonomous date engine to evaluate all 28 agents against one another and generate the compatibility leaderboard.
+            Run the autonomous date engine to evaluate all {people.length} agents against one another and generate the compatibility leaderboard.
           </p>
           <button
             className="btn btn-lg btn-primary"
             onClick={onSimulateAll}
             disabled={isSimulating}
           >
-            {isSimulating ? 'Simulating All Matches...' : '🚀 Simulate All 378 Dates Now'}
+            {isSimulating ? 'Simulating All Matches...' : `🚀 Simulate All ${Math.round((people.length * (people.length - 1)) / 2)} Dates Now`}
           </button>
         </div>
       ) : (
@@ -161,26 +170,50 @@ export default function RankingsView({ people, rankings, onSimulateAll, onSelect
                   >
                     {people.map(p => (
                       <option key={p.id} value={p.id}>
-                        {p.name} ({p.analysis?.personalityType}) — {rankings?.[p.id]?.matches?.length || 0} suitors ranked
+                        {p.region === 'India' ? '🇮🇳 ' : '🌍 '}{p.name} ({p.analysis?.personalityType}) — {rankings?.[p.id]?.matches?.length || 0} suitors ranked
                       </option>
                     ))}
                   </select>
                 </div>
               </div>
 
-              {/* Tier Filter */}
-              <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '0.82rem', color: 'var(--text-tertiary)' }}>Filter Tier:</span>
-                {['ALL', 'soulmate', 'great', 'good', 'exploring'].map(t => (
+              {/* Suitor Region & Tier Filters */}
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-tertiary)' }}>Suitors:</span>
                   <button
-                    key={t}
-                    className={`btn btn-sm ${tierFilter === t ? 'btn-secondary' : 'btn-ghost'}`}
-                    onClick={() => setTierFilter(t)}
-                    style={{ textTransform: 'capitalize' }}
+                    className={`btn btn-sm ${suitorRegionFilter === 'ALL' ? 'btn-secondary' : 'btn-ghost'}`}
+                    onClick={() => setSuitorRegionFilter('ALL')}
                   >
-                    {t}
+                    All
                   </button>
-                ))}
+                  <button
+                    className={`btn btn-sm ${suitorRegionFilter === 'India' ? 'btn-secondary' : 'btn-ghost'}`}
+                    onClick={() => setSuitorRegionFilter('India')}
+                  >
+                    🇮🇳 India
+                  </button>
+                  <button
+                    className={`btn btn-sm ${suitorRegionFilter === 'Global' ? 'btn-secondary' : 'btn-ghost'}`}
+                    onClick={() => setSuitorRegionFilter('Global')}
+                  >
+                    🌍 Global
+                  </button>
+                </div>
+
+                <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-tertiary)' }}>Tier:</span>
+                  {['ALL', 'soulmate', 'great', 'good'].map(t => (
+                    <button
+                      key={t}
+                      className={`btn btn-sm ${tierFilter === t ? 'btn-secondary' : 'btn-ghost'}`}
+                      onClick={() => setTierFilter(t)}
+                      style={{ textTransform: 'capitalize' }}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 

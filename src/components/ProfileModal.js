@@ -92,11 +92,27 @@ export default function ProfileModal({ person, onClose, onDatePerson, rankings }
               <h2 id="profile-modal-title" style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 800 }}>
                 {person.name}
               </h2>
+              <span
+                style={{
+                  fontSize: '0.72rem',
+                  padding: '2px 8px',
+                  borderRadius: 'var(--radius-full)',
+                  background: person.region === 'India' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(56, 189, 248, 0.15)',
+                  color: person.region === 'India' ? 'var(--gold-400)' : 'var(--sky-400)',
+                  border: person.region === 'India' ? '1px solid rgba(245, 158, 11, 0.3)' : '1px solid rgba(56, 189, 248, 0.3)',
+                  fontWeight: 600
+                }}
+              >
+                {person.region === 'India' ? '🇮🇳 India' : '🌍 Global'}
+              </span>
               <span className="profile-mbti">{person.analysis?.personalityType || 'ENFP'}</span>
             </div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
               {person.scraped?.linkedin?.headline || 'Autonomous Dating Agent'}
             </p>
+            <div style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', marginTop: '2px' }}>
+              📍 {person.location || person.scraped?.linkedin?.location || 'Global'}
+            </div>
           </div>
         </div>
 
