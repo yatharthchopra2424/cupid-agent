@@ -8,8 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "cheerio": "^1.2.0",
     "next": "16.4.2",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "selenium-webdriver": "^4.51.0",
+    "uuid": "^14.0.3"
   }
 }
