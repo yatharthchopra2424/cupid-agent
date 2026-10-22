@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 
-export default function ProfileList({ people, onSelectPerson, onDatePerson, rankings }) {
+export default function ProfileList({ people, onSelectPerson, onDatePerson, onDirectDate, rankings }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedMbti, setSelectedMbti] = useState('ALL');
   const [selectedGender, setSelectedGender] = useState('ALL');
@@ -293,6 +293,19 @@ export default function ProfileList({ people, onSelectPerson, onDatePerson, rank
                     </a>
 
                     <div style={{ marginLeft: 'auto', display: 'flex', gap: '6px' }}>
+                      {onDirectDate && (
+                        <button
+                          className="btn btn-sm btn-primary"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onDirectDate(person);
+                          }}
+                          style={{ padding: '4px 10px', fontSize: '0.78rem' }}
+                          title="Chat and date 1-on-1 directly with this person"
+                        >
+                          💬 1-on-1
+                        </button>
+                      )}
                       <button
                         className="btn btn-sm btn-secondary"
                         onClick={(e) => {
@@ -300,9 +313,9 @@ export default function ProfileList({ people, onSelectPerson, onDatePerson, rank
                           onDatePerson(person);
                         }}
                         style={{ padding: '4px 10px', fontSize: '0.78rem' }}
-                        title="Simulate a date with this person"
+                        title="Simulate autonomous date between two agents"
                       >
-                        💘 Date
+                        💘 Sim
                       </button>
                     </div>
                   </div>

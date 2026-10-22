@@ -8,17 +8,19 @@ import DateSimulator from '@/components/DateSimulator';
 import RankingsView from '@/components/RankingsView';
 import ProfileModal from '@/components/ProfileModal';
 import AddPersonModal from '@/components/AddPersonModal';
+import DirectDateChat from '@/components/DirectDateChat';
 
 export default function Home() {
   const [people, setPeople] = useState([]);
   const [dates, setDates] = useState([]);
   const [rankings, setRankings] = useState({});
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('explore'); // 'explore' | 'date' | 'rankings' | 'add'
+  const [activeTab, setActiveTab] = useState('explore'); // 'explore' | 'direct-date' | 'date' | 'rankings' | 'add'
   const [selectedPersonForModal, setSelectedPersonForModal] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [datePreselectP1, setDatePreselectP1] = useState(null);
   const [datePreselectP2, setDatePreselectP2] = useState(null);
+  const [directDatePersonId, setDirectDatePersonId] = useState(null);
   const [isSimulatingAll, setIsSimulatingAll] = useState(false);
   const [toast, setToast] = useState(null);
 
@@ -125,12 +127,18 @@ export default function Home() {
   // Launch date from profile card
   const handleDatePerson = (person) => {
     setDatePreselectP1(person);
-    // Find a suitor with high interest overlap or different person
     const otherSuitor = people.find(p => p.id !== person.id);
     if (otherSuitor) {
       setDatePreselectP2(otherSuitor);
     }
     setActiveTab('date');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Launch 1-on-1 direct date with person
+  const handleDirectDate = (person) => {
+    setDirectDatePersonId(person.id);
+    setActiveTab('direct-date');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -188,6 +196,7 @@ export default function Home() {
               peopleCount={people.length}
               datesCount={dates.length}
               onStartDating={() => setActiveTab('date')}
+              onDirectDate={() => setActiveTab('direct-date')}
               onExplore={() => {
                 const el = document.getElementById('agents-gallery');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -200,10 +209,19 @@ export default function Home() {
                 people={people}
                 onSelectPerson={(p) => setSelectedPersonForModal(p)}
                 onDatePerson={handleDatePerson}
+                onDirectDate={handleDirectDate}
                 rankings={rankings}
               />
             </div>
           </>
+        )}
+
+        {activeTab === 'direct-date' && (
+          <DirectDateChat
+            people={people}
+            initialPersonId={directDatePersonId}
+            onBackToExplore={() => setActiveTab('explore')}
+          />
         )}
 
         {activeTab === 'date' && (
@@ -244,6 +262,7 @@ export default function Home() {
           person={selectedPersonForModal}
           onClose={() => setSelectedPersonForModal(null)}
           onDatePerson={handleDatePerson}
+          onDirectDate={handleDirectDate}
           rankings={rankings}
         />
       )}

@@ -110,7 +110,7 @@ export async function createNemotronCompletion({
     throw new Error('No valid NVIDIA API keys available.');
   }
 
-  const maxAttempts = Math.min(keys.length * 2, 8);
+  const maxAttempts = Math.min(keys.length, 3);
   let lastError = null;
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
@@ -121,6 +121,8 @@ export async function createNemotronCompletion({
       const client = new OpenAI({
         apiKey: keyInfo.key,
         baseURL: 'https://integrate.api.nvidia.com/v1',
+        timeout: 10000,
+        maxRetries: 0
       });
 
       const streamResponse = await client.chat.completions.create({

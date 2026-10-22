@@ -18,6 +18,14 @@ export default function Navbar({ activeTab, setActiveTab, onRunAllDates, onReset
         </button>
 
         <button
+          className={`nav-link ${activeTab === 'direct-date' ? 'active' : ''}`}
+          onClick={() => setActiveTab('direct-date')}
+        >
+          <span className="icon">💌</span>
+          <span>Date 1-on-1</span>
+        </button>
+
+        <button
           className={`nav-link ${activeTab === 'date' ? 'active' : ''}`}
           onClick={() => setActiveTab('date')}
         >

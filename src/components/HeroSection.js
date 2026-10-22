@@ -1,6 +1,6 @@
 'use client';
 
-export default function HeroSection({ peopleCount, datesCount, onStartDating, onExplore, onRunAll }) {
+export default function HeroSection({ peopleCount, datesCount, onStartDating, onDirectDate, onExplore, onRunAll }) {
   return (
     <section className="hero">
       <div className="hero-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
@@ -13,19 +13,20 @@ export default function HeroSection({ peopleCount, datesCount, onStartDating, on
 
       <p className="hero-description">
         Each real person is represented by an intelligent agent synthesized from their public LinkedIn 
-        and Instagram profiles. The agents meet, converse, assess emotional needs, shared values, and chemistry, 
-        and rank who fits them best.
+        and Instagram profiles. The agents date each other or chat directly 1-on-1 with you, assessing emotional needs, shared values, and chemistry.
       </p>
 
       <div className="hero-cta">
-        <button className="btn btn-lg btn-primary" onClick={onStartDating}>
-          <span>💬 Start Date Simulator</span>
+        {onDirectDate && (
+          <button className="btn btn-lg btn-primary" onClick={onDirectDate}>
+            <span>💌 Date an Agent 1-on-1</span>
+          </button>
+        )}
+        <button className="btn btn-lg btn-secondary" onClick={onStartDating}>
+          <span>💬 Autonomous Match Simulator</span>
         </button>
-        <button className="btn btn-lg btn-secondary" onClick={onExplore}>
+        <button className="btn btn-lg btn-ghost" onClick={onExplore}>
           <span>👥 Explore {peopleCount || 25}+ Agents</span>
-        </button>
-        <button className="btn btn-lg btn-ghost" onClick={onRunAll}>
-          <span>⚡ Run All {peopleCount ? Math.round((peopleCount * (peopleCount - 1)) / 2) : 300} Dates</span>
         </button>
       </div>
 

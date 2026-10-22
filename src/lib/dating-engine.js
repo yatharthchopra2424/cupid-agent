@@ -523,14 +523,20 @@ Return ONLY a valid JSON object matching this exact schema:
   }
 }`;
 
-    const completion = await createNemotronCompletion({
+    const nemotronCall = createNemotronCompletion({
       messages: [
-        { role: 'system', content: 'You are an advanced AI dating simulation orchestrator powered by NVIDIA Nemotron 120B. Output ONLY valid JSON without conversational wrapper.' },
+        { role: 'system', content: 'You are an advanced AI dating simulation orchestrator powered by NVIDIA Nemotron 120B. Output ONLY valid JSON without conversational wrapper. Keep dialogue turns natural, punchy, and concise.' },
         { role: 'user', content: prompt }
       ],
       temperature: 0.8,
-      max_tokens: 4096
+      max_tokens: 1500
     });
+
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('Nemotron call timed out on serverless execution')), 14000)
+    );
+
+    const completion = await Promise.race([nemotronCall, timeoutPromise]);
 
     // Resilient JSON extraction
     function extractJSON(text) {

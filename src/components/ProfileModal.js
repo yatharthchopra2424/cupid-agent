@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { createAgent } from '@/lib/agent-engine';
 
-export default function ProfileModal({ person, onClose, onDatePerson, rankings }) {
+export default function ProfileModal({ person, onClose, onDatePerson, onDirectDate, rankings }) {
   const [activeTab, setActiveTab] = useState('agent');
   const dialogRef = useRef(null);
 
@@ -117,14 +117,25 @@ export default function ProfileModal({ person, onClose, onDatePerson, rankings }
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          {onDirectDate && (
+            <button
+              className="btn btn-sm btn-primary"
+              onClick={() => {
+                if (dialogRef.current) dialogRef.current.close();
+                onDirectDate(person);
+              }}
+            >
+              💬 Date 1-on-1 Directly
+            </button>
+          )}
           <button
-            className="btn btn-sm btn-primary"
+            className="btn btn-sm btn-secondary"
             onClick={() => {
               if (dialogRef.current) dialogRef.current.close();
               onDatePerson(person);
             }}
           >
-            💘 Date This Agent
+            💘 Auto Simulate
           </button>
           <button
             className="modal-close"

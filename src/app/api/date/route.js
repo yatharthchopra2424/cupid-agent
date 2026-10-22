@@ -3,6 +3,8 @@ import { getAllPeople, getDatingResults, setDatingResults } from '@/lib/store';
 import { simulateDate, simulateDateWithNemotron, runAllDates } from '@/lib/dating-engine';
 import { keyRotator } from '@/lib/nvidia-client';
 
+export const maxDuration = 60;
+
 export async function GET() {
   try {
     const results = getDatingResults();

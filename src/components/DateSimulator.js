@@ -83,6 +83,10 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
         })
       });
 
+      if (!res.ok) {
+        throw new Error(`Server returned ${res.status}`);
+      }
+
       const data = await res.json();
       if (data.success && data.result) {
         setCurrentDateResult(data.result);
@@ -95,9 +99,31 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
         if (onDateComplete) {
           onDateComplete(data.result);
         }
+      } else {
+        throw new Error(data.error || 'Date simulation returned no result');
       }
     } catch (err) {
-      console.error('Failed to simulate date:', err);
+      console.warn('Simulation attempt failed, activating instant local fallback:', err);
+      // Auto-recover immediately using deterministic engine so user is never stuck
+      try {
+        const fallbackRes = await fetch('/api/date', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'single',
+            person1Id,
+            person2Id,
+            forceDeterministic: true
+          })
+        });
+        const fallbackData = await fallbackRes.json();
+        if (fallbackData.success && fallbackData.result) {
+          setCurrentDateResult(fallbackData.result);
+          setVisibleMessagesCount(fallbackData.result.conversation.length);
+        }
+      } catch (fallbackErr) {
+        console.error('Fallback error:', fallbackErr);
+      }
     } finally {
       setIsSimulating(false);
     }
