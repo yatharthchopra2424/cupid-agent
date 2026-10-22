@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server';
 import { getAllPeople, getDatingResults, setDatingResults } from '@/lib/store';
-import { simulateDate, runAllDates } from '@/lib/dating-engine';
+import { simulateDate, simulateDateWithNemotron, runAllDates } from '@/lib/dating-engine';
+import { keyRotator } from '@/lib/nvidia-client';
 
 export async function GET() {
   try {
     const results = getDatingResults();
-    return NextResponse.json({ success: true, results, count: results.length });
+    const llmStatus = keyRotator.getStatus();
+    return NextResponse.json({ success: true, results, count: results.length, llmStatus });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
@@ -14,7 +16,7 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { action, person1Id, person2Id } = body;
+    const { action, person1Id, person2Id, forceDeterministic } = body;
     
     if (action === 'single') {
       // Single date between two people
@@ -29,7 +31,10 @@ export async function POST(request) {
         );
       }
       
-      const result = simulateDate(p1, p2);
+      // Use Nemotron 120B with multi-key rotation (or fallback to deterministic)
+      const result = forceDeterministic 
+        ? simulateDate(p1, p2)
+        : await simulateDateWithNemotron(p1, p2);
       
       // Add to existing results
       const existing = getDatingResults();
@@ -43,7 +48,11 @@ export async function POST(request) {
       filtered.push(result);
       setDatingResults(filtered);
       
-      return NextResponse.json({ success: true, result });
+      return NextResponse.json({ 
+        success: true, 
+        result,
+        llmStatus: keyRotator.getStatus()
+      });
     }
     
     if (action === 'all') {

@@ -13,6 +13,7 @@
  */
 
 import { createAgent } from './agent-engine.js';
+import { createNemotronCompletion, isLLMAvailable } from './nvidia-client.js';
 
 // Conversation templates based on personality types
 const OPENERS = {
@@ -451,3 +452,133 @@ export function runAllDates(people) {
   
   return results;
 }
+
+/**
+ * Simulate an authentic date using NVIDIA Nemotron 120B with swappable keys.
+ * Falls back to deterministic engine if keys are not set or unavailable.
+ */
+export async function simulateDateWithNemotron(person1, person2) {
+  if (!isLLMAvailable()) {
+    const fallback = simulateDate(person1, person2);
+    fallback.llmMetadata = {
+      poweredBy: 'Autonomous Deterministic Engine (No NVIDIA Keys Set)',
+      isRealLLM: false
+    };
+    return fallback;
+  }
+
+  const agent1 = createAgent(person1);
+  const agent2 = createAgent(person2);
+
+  try {
+    const prompt = `You are orchestrating an autonomous dating conversation between two real people represented as AI agents:
+
+Agent 1: ${agent1.name} (${agent1.personalityType}, ${agent1.communicationStyle})
+- City/Location: ${person1.location || 'Global'}
+- Needs: ${(agent1.needs || []).join(', ')}
+- Hobbies: ${(agent1.hobbies || []).join(', ')}
+- Interests: ${(agent1.interests || []).join(', ')}
+- Values: ${(agent1.values || []).join(', ')}
+
+Agent 2: ${agent2.name} (${agent2.personalityType}, ${agent2.communicationStyle})
+- City/Location: ${person2.location || 'Global'}
+- Needs: ${(agent2.needs || []).join(', ')}
+- Hobbies: ${(agent2.hobbies || []).join(', ')}
+- Interests: ${(agent2.interests || []).join(', ')}
+- Values: ${(agent2.values || []).join(', ')}
+
+Simulate an authentic, engaging 6-to-8 turn dating dialogue across 4 phases:
+1. Ice Breaking: Authentic greetings and witty first impressions based on their real personalities.
+2. Shared Passions: Natural discovery of hobbies, travel, tech, or creative pursuits.
+3. Vulnerability & Values: Honest conversation about ambition, work-life balance, relationships, and emotional needs.
+4. Chemistry Verdict: Mutual conclusion and closing remarks.
+
+Return ONLY a valid JSON object matching this exact schema:
+{
+  "chemistryScore": 82,
+  "verdict": "Instant Spark with Strong Mutual Ambition",
+  "conversation": [
+    {
+      "phase": "Ice Breaking",
+      "speaker": "${agent1.name}",
+      "message": "...",
+      "mood": "curious"
+    },
+    {
+      "phase": "Ice Breaking",
+      "speaker": "${agent2.name}",
+      "message": "...",
+      "mood": "engaged"
+    }
+  ],
+  "sharedInterests": ["..."],
+  "sharedHobbies": ["..."],
+  "sharedValues": ["..."],
+  "compatibility": {
+    "interests": 80,
+    "hobbies": 75,
+    "values": 85,
+    "personality": 80,
+    "communication": 85
+  }
+}`;
+
+    const completion = await createNemotronCompletion({
+      messages: [
+        { role: 'system', content: 'You are an advanced AI dating simulation orchestrator powered by NVIDIA Nemotron 120B. Output ONLY valid JSON.' },
+        { role: 'user', content: prompt }
+      ],
+      temperature: 0.85,
+      max_tokens: 3000
+    });
+
+    let raw = completion.content.trim();
+    if (raw.startsWith('```json')) {
+      raw = raw.replace(/^```json/, '').replace(/```$/, '').trim();
+    } else if (raw.startsWith('```')) {
+      raw = raw.replace(/^```/, '').replace(/```$/, '').trim();
+    }
+
+    const parsed = JSON.parse(raw);
+
+    return {
+      id: `date-${person1.id}-${person2.id}`,
+      person1: { id: person1.id, name: person1.name },
+      person2: { id: person2.id, name: person2.name },
+      conversation: Array.isArray(parsed.conversation) && parsed.conversation.length > 0
+        ? parsed.conversation
+        : simulateDate(person1, person2).conversation,
+      chemistryScore: typeof parsed.chemistryScore === 'number' ? parsed.chemistryScore : 72,
+      sharedInterests: parsed.sharedInterests || findSharedTopics(agent1.interests, agent2.interests),
+      sharedHobbies: parsed.sharedHobbies || findSharedTopics(agent1.hobbies, agent2.hobbies),
+      sharedValues: parsed.sharedValues || findSharedTopics(agent1.values, agent2.values),
+      compatibility: {
+        overall: parsed.chemistryScore || 72,
+        interests: parsed.compatibility?.interests || 75,
+        hobbies: parsed.compatibility?.hobbies || 70,
+        values: parsed.compatibility?.values || 80,
+        personality: parsed.compatibility?.personality || 75,
+        communication: parsed.compatibility?.communication || 80
+      },
+      llmMetadata: {
+        poweredBy: 'NVIDIA Nemotron 120B',
+        model: completion.modelUsed,
+        keyIndex: completion.keyIndexUsed,
+        totalKeys: completion.totalKeys,
+        isRealLLM: true,
+        reasoning: completion.reasoning || null
+      },
+      timestamp: new Date().toISOString()
+    };
+  } catch (err) {
+    console.warn('[Dating Engine] Nemotron 120B call failed or hit limit, falling back cleanly:', err.message);
+    const fallback = simulateDate(person1, person2);
+    fallback.llmMetadata = {
+      poweredBy: 'Deterministic Engine (NVIDIA Fallback)',
+      isRealLLM: false,
+      fallbackReason: err.message
+    };
+    return fallback;
+  }
+}
+

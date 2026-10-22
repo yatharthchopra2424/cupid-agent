@@ -9,7 +9,20 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
   const [currentDateResult, setCurrentDateResult] = useState(null);
   const [visibleMessagesCount, setVisibleMessagesCount] = useState(0);
   const [animationSpeed, setAnimationSpeed] = useState('animated'); // 'animated' or 'instant'
+  const [llmStatus, setLlmStatus] = useState(null);
+  const [useNemotron, setUseNemotron] = useState(true);
+  const [showReasoning, setShowReasoning] = useState(false);
   const chatBottomRef = useRef(null);
+
+  // Fetch LLM configuration status
+  useEffect(() => {
+    fetch('/api/date')
+      .then(res => res.json())
+      .then(data => {
+        if (data.llmStatus) setLlmStatus(data.llmStatus);
+      })
+      .catch(err => console.error(err));
+  }, []);
 
   // Sync preselected people if prop changes
   useEffect(() => {
@@ -56,6 +69,7 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
     setIsSimulating(true);
     setCurrentDateResult(null);
     setVisibleMessagesCount(0);
+    setShowReasoning(false);
 
     try {
       const res = await fetch('/api/date', {
@@ -64,13 +78,15 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
         body: JSON.stringify({
           action: 'single',
           person1Id,
-          person2Id
+          person2Id,
+          forceDeterministic: !useNemotron
         })
       });
 
       const data = await res.json();
       if (data.success && data.result) {
         setCurrentDateResult(data.result);
+        if (data.llmStatus) setLlmStatus(data.llmStatus);
         if (animationSpeed === 'instant') {
           setVisibleMessagesCount(data.result.conversation.length);
         } else {
@@ -117,6 +133,70 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
 
       {/* Date Selector Box */}
       <div className="card-glass" style={{ marginBottom: '2rem' }}>
+        {/* NVIDIA Nemotron 120B Status & Settings Bar */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '12px',
+          padding: '12px 16px',
+          background: 'rgba(16, 185, 129, 0.05)',
+          border: '1px solid rgba(16, 185, 129, 0.2)',
+          borderRadius: 'var(--radius-md)',
+          marginBottom: '1.5rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '28px',
+              height: '28px',
+              borderRadius: '6px',
+              background: '#76b900',
+              color: '#000',
+              fontWeight: 800,
+              fontSize: '0.85rem'
+            }}>
+              NV
+            </span>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                  NVIDIA Nemotron 120B Super-VL
+                </span>
+                <span style={{
+                  fontSize: '0.7rem',
+                  padding: '2px 8px',
+                  borderRadius: 'var(--radius-full)',
+                  background: llmStatus?.configured ? 'rgba(52, 211, 153, 0.2)' : 'rgba(245, 158, 11, 0.2)',
+                  color: llmStatus?.configured ? 'var(--emerald-400)' : 'var(--gold-400)',
+                  border: llmStatus?.configured ? '1px solid rgba(52, 211, 153, 0.3)' : '1px solid rgba(245, 158, 11, 0.3)',
+                  fontWeight: 600
+                }}>
+                  {llmStatus?.configured
+                    ? `🟢 ${llmStatus.activeKeysCount} Keys Swappable (40 RPM)`
+                    : '🟡 Demo Fallback Mode'}
+                </span>
+              </div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', marginTop: '2px' }}>
+                Model: <code>{llmStatus?.model || 'nvidia/nemotron-3.5-super-vl-120b-a12b'}</code> • Thinking Monologue Enabled
+              </div>
+            </div>
+          </div>
+
+          <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            <input
+              type="checkbox"
+              checked={useNemotron}
+              onChange={(e) => setUseNemotron(e.target.checked)}
+              style={{ cursor: 'pointer', accentColor: 'var(--emerald-500)', width: '16px', height: '16px' }}
+            />
+            <span>Enable Nemotron 120B LLM</span>
+          </label>
+        </div>
+
         <div className="date-selector">
           {/* Person 1 Selector */}
           <div className="card" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-default)' }}>
@@ -422,6 +502,58 @@ export default function DateSimulator({ people, preselectedPerson1, preselectedP
                     <div className="compat-bar-fill" style={{ width: `${Math.round(currentDateResult.compatibility.personality || 50)}%` }} />
                   </div>
                 </div>
+              </div>
+
+              {/* LLM Engine & Reasoning Details */}
+              <div style={{
+                marginTop: '2rem',
+                padding: '1.25rem',
+                borderRadius: 'var(--radius-md)',
+                background: currentDateResult.llmMetadata?.isRealLLM ? 'rgba(16, 185, 129, 0.05)' : 'rgba(255, 255, 255, 0.02)',
+                border: currentDateResult.llmMetadata?.isRealLLM ? '1px solid rgba(16, 185, 129, 0.25)' : '1px solid var(--border-subtle)',
+                textAlign: 'left'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontSize: '1.1rem' }}>{currentDateResult.llmMetadata?.isRealLLM ? '🟢' : '⚙️'}</span>
+                    <span style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-primary)' }}>
+                      {currentDateResult.llmMetadata?.isRealLLM
+                        ? `Generated by NVIDIA Nemotron 120B (Key #${(currentDateResult.llmMetadata.keyIndex ?? 0) + 1} of ${currentDateResult.llmMetadata.totalKeys || 4})`
+                        : (currentDateResult.llmMetadata?.poweredBy || 'Deterministic Engine')}
+                    </span>
+                  </div>
+                  {currentDateResult.llmMetadata?.reasoning && (
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-secondary"
+                      onClick={() => setShowReasoning(!showReasoning)}
+                      style={{ fontSize: '0.8rem' }}
+                    >
+                      {showReasoning ? '🙈 Hide Thinking Monologue' : '🧠 View Nemotron 120B Monologue'}
+                    </button>
+                  )}
+                </div>
+
+                {showReasoning && currentDateResult.llmMetadata?.reasoning && (
+                  <div style={{
+                    marginTop: '1rem',
+                    padding: '1rem',
+                    borderRadius: 'var(--radius-sm)',
+                    background: 'rgba(0, 0, 0, 0.4)',
+                    border: '1px solid rgba(16, 185, 129, 0.2)',
+                    fontSize: '0.82rem',
+                    color: 'var(--text-secondary)',
+                    maxHeight: '300px',
+                    overflowY: 'auto',
+                    whiteSpace: 'pre-wrap',
+                    fontFamily: 'monospace'
+                  }}>
+                    <div style={{ color: 'var(--emerald-400)', fontWeight: 600, marginBottom: '6px' }}>
+                      // NVIDIA Nemotron 120B Chain-of-Thought Reasoning:
+                    </div>
+                    {currentDateResult.llmMetadata.reasoning}
+                  </div>
+                )}
               </div>
             </div>
           )}

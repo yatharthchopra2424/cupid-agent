@@ -3,8 +3,8 @@
 export default function HeroSection({ peopleCount, datesCount, onStartDating, onExplore, onRunAll }) {
   return (
     <section className="hero">
-      <div className="hero-badge">
-        <span>✨</span> Autonomous AI Dating Network & Matchmaker
+      <div className="hero-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+        <span>✨</span> Autonomous AI Dating Network • Powered by <strong>NVIDIA Nemotron 120B Super-VL</strong>
       </div>
 
       <h1 className="hero-title">
@@ -69,9 +69,9 @@ export default function HeroSection({ peopleCount, datesCount, onStartDating, on
 
         <div className="step-card">
           <div className="step-number">3</div>
-          <h3 className="step-title">Autonomous Dates</h3>
+          <h3 className="step-title">Nemotron 120B Dates</h3>
           <p className="step-description">
-            Agents converse through ice-breaking, passion topics, vulnerable questions, and chemistry evaluation with inner monologues.
+            Agents converse through multi-turn dates with internal monologue reasoning using NVIDIA Nemotron 120B and 4 swappable keys (40 RPM).
           </p>
         </div>
 

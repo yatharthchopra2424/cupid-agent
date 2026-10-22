@@ -6,9 +6,10 @@ import fs from 'fs';
 import path from 'path';
 import SEED_PEOPLE from './people-seed.js';
 
+const BUNDLED_FILE = path.join(process.cwd(), 'data', 'people.json');
 const DATA_FILE = process.env.VERCEL
   ? path.join('/tmp', 'people.json')
-  : path.join(process.cwd(), 'data', 'people.json');
+  : BUNDLED_FILE;
 
 let store = {
   people: [],
@@ -37,6 +38,10 @@ function loadStore() {
     if (fs.existsSync(DATA_FILE)) {
       const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
       store = { ...data, initialized: true };
+    } else if (fs.existsSync(BUNDLED_FILE)) {
+      const data = JSON.parse(fs.readFileSync(BUNDLED_FILE, 'utf-8'));
+      store = { ...data, initialized: true };
+      saveStore();
     } else {
       // Initialize with seed data
       store = {
