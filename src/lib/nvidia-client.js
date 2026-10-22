@@ -10,6 +10,7 @@ class NvidiaKeyRotator {
   constructor() {
     this.currentIndex = 0;
     this.cooldowns = new Map(); // key -> cooldownExpiryTimestamp
+    this.invalidKeys = new Set(); // permanently failed (401/403)
     this.cooldownDurationMs = 60 * 1000; // 60s cooldown on 429
   }
 
@@ -25,7 +26,7 @@ class NvidiaKeyRotator {
 
     const keys = rawKeys
       .map(k => (k || '').trim())
-      .filter(k => k.length > 5);
+      .filter(k => k.length > 5 && !this.invalidKeys.has(k));
 
     // Deduplicate preserving order
     return Array.from(new Set(keys));
@@ -68,6 +69,11 @@ class NvidiaKeyRotator {
     console.warn(`[NVIDIA Key Rotator] Key ...${key.slice(-4)} hit 429 rate limit. Cooling down for 60s.`);
   }
 
+  markUnauthorized(key) {
+    this.invalidKeys.add(key);
+    console.warn(`[NVIDIA Key Rotator] Key ...${key.slice(-4)} authorization failed (403/401). Marked inactive.`);
+  }
+
   getStatus() {
     const keys = this.getAvailableKeys();
     const now = Date.now();
@@ -75,6 +81,7 @@ class NvidiaKeyRotator {
     return {
       configuredKeysCount: keys.length,
       activeKeysCount: activeKeys,
+      invalidKeysCount: this.invalidKeys.size,
       isAvailable: keys.length > 0,
       targetModel: process.env.NVIDIA_MODEL || 'nvidia/nemotron-3.5-super-vl-120b-a12b'
     };
@@ -100,10 +107,10 @@ export async function createNemotronCompletion({
 }) {
   const keys = keyRotator.getAvailableKeys();
   if (keys.length === 0) {
-    throw new Error('No NVIDIA API keys configured. Set NVIDIA_API_KEY_1..4 or NVIDIA_API_KEY.');
+    throw new Error('No valid NVIDIA API keys available.');
   }
 
-  const maxAttempts = Math.min(keys.length, 4);
+  const maxAttempts = Math.min(keys.length * 2, 8);
   let lastError = null;
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
@@ -152,14 +159,24 @@ export async function createNemotronCompletion({
       lastError = err;
       const status = err.status || err.statusCode;
       const isRateLimit = status === 429 || (err.message && err.message.includes('429'));
+      const isAuthError = status === 401 || status === 403 || (err.message && (err.message.includes('401') || err.message.includes('403')));
+      const isServerTransient = status >= 500 && status < 600;
 
       if (isRateLimit) {
         keyRotator.markRateLimited(keyInfo.key);
-        // Continue loop to try next key in pool
         continue;
       }
 
-      // Non-429 error (e.g. auth error or invalid model)
+      if (isAuthError) {
+        keyRotator.markUnauthorized(keyInfo.key);
+        continue;
+      }
+
+      if (isServerTransient) {
+        keyRotator.markRateLimited(keyInfo.key);
+        continue;
+      }
+
       console.error(`[NVIDIA Nemotron Error] Attempt ${attempt + 1}:`, err.message);
       if (attempt === maxAttempts - 1) throw err;
     }

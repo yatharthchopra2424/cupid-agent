@@ -525,21 +525,37 @@ Return ONLY a valid JSON object matching this exact schema:
 
     const completion = await createNemotronCompletion({
       messages: [
-        { role: 'system', content: 'You are an advanced AI dating simulation orchestrator powered by NVIDIA Nemotron 120B. Output ONLY valid JSON.' },
+        { role: 'system', content: 'You are an advanced AI dating simulation orchestrator powered by NVIDIA Nemotron 120B. Output ONLY valid JSON without conversational wrapper.' },
         { role: 'user', content: prompt }
       ],
-      temperature: 0.85,
-      max_tokens: 3000
+      temperature: 0.8,
+      max_tokens: 4096
     });
 
-    let raw = completion.content.trim();
-    if (raw.startsWith('```json')) {
-      raw = raw.replace(/^```json/, '').replace(/```$/, '').trim();
-    } else if (raw.startsWith('```')) {
-      raw = raw.replace(/^```/, '').replace(/```$/, '').trim();
+    // Resilient JSON extraction
+    function extractJSON(text) {
+      if (!text) return null;
+      let cleaned = text.replace(/```json/gi, '').replace(/```/g, '').trim();
+      const firstBrace = cleaned.indexOf('{');
+      const lastBrace = cleaned.lastIndexOf('}');
+      if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+        cleaned = cleaned.substring(firstBrace, lastBrace + 1);
+      }
+      try {
+        return JSON.parse(cleaned);
+      } catch (e1) {
+        try {
+          const relaxed = cleaned
+            .replace(/,\s*}/g, '}')
+            .replace(/,\s*]/g, ']');
+          return JSON.parse(relaxed);
+        } catch (e2) {
+          return null;
+        }
+      }
     }
 
-    const parsed = JSON.parse(raw);
+    const parsed = extractJSON(completion.content) || {};
 
     return {
       id: `date-${person1.id}-${person2.id}`,
