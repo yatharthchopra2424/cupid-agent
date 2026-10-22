@@ -1,0 +1,6 @@
+file 'C:/Users/yatha/OneDrive/Desktop/person_agent/demo_assets/clips/scene1.mp4'
+file 'C:/Users/yatha/OneDrive/Desktop/person_agent/demo_assets/clips/scene2.mp4'
+file 'C:/Users/yatha/OneDrive/Desktop/person_agent/demo_assets/clips/scene3.mp4'
+file 'C:/Users/yatha/OneDrive/Desktop/person_agent/demo_assets/clips/scene4.mp4'
+file 'C:/Users/yatha/OneDrive/Desktop/person_agent/demo_assets/clips/scene5.mp4'
+file 'C:/Users/yatha/OneDrive/Desktop/person_agent/demo_assets/clips/scene6.mp4'
